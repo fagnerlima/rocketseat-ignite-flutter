@@ -20,20 +20,26 @@ class SplashPage extends StatelessWidget {
                   SizedBox(height: 60,),
                   Row(
                     children: [
-                      Image.asset(
-                        'assets/images/retangulo-dir.png',
-                        width: 198,
-                        height: 98,
+                      Opacity(
+                        opacity: 0.2,
+                        child: Image.asset(
+                          'assets/images/retangulo-dir.png',
+                          width: 198,
+                          height: 98,
+                        ),
                       ),
                     ],
                   ),
                   SizedBox(height: 24,),
                   Row(
                     children: [
-                      Image.asset(
-                        'assets/images/retangulo-dir.png',
-                        width: 114,
-                        height: 54,
+                      Opacity(
+                        opacity: 0.2,
+                        child: Image.asset(
+                          'assets/images/retangulo-dir.png',
+                          width: 114,
+                          height: 54,
+                        ),
                       ),
                     ],
                   ),
@@ -50,10 +56,13 @@ class SplashPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Image.asset(
-                        'assets/images/retangulo-esq.png',
-                        width: 114,
-                        height: 54,
+                      Opacity(
+                        opacity: 0.2,
+                        child: Image.asset(
+                          'assets/images/retangulo-esq.png',
+                          width: 114,
+                          height: 54,
+                        ),
                       ),
                     ],
                   ),
@@ -61,10 +70,13 @@ class SplashPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Image.asset(
-                        'assets/images/retangulo-esq.png',
-                        width: 198,
-                        height: 98,
+                      Opacity(
+                        opacity: 0.2,
+                        child: Image.asset(
+                          'assets/images/retangulo-esq.png',
+                          width: 198,
+                          height: 98,
+                        ),
                       ),
                     ],
                   ),
