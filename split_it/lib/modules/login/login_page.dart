@@ -34,25 +34,71 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ListTile(
-                leading: Image.asset('assets/images/emoji.png'),
-                title: Text(
-                  'Faça seu login com uma das contas abaixo',
-                  style: GoogleFonts.inter(
-                    color: AppTheme.colors.button,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
+              Padding(
+                padding: const EdgeInsets.only(left: 40),
+                child: ListTile(
+                  leading: Image.asset('assets/images/emoji.png'),
+                  title: Text(
+                    'Faça seu login com uma das contas abaixo',
+                    style: GoogleFonts.inter(
+                      color: AppTheme.colors.button,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),
               SizedBox(height: 32,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.fromBorderSide(
+                      BorderSide(color: AppTheme.colors.border)
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: 56,
+                        height: 56,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(width: 15.5,),
+                            Image.asset('assets/images/google.png'),
+                            SizedBox(width: 15.5,),
+                            Container(
+                              width: 1,
+                              color: AppTheme.colors.border,
+                            )
+                          ],
+                        )
+                      ),
+                      Expanded(child: Container()),
+                      Text(
+                        'Entrar com Google',
+                        style: GoogleFonts.inter(
+                          color: AppTheme.colors.button,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Expanded(child: Container()),
+                    ],
+                  ),
+                ),
+              ),
               ElevatedButton.icon(
                 onPressed: () {},
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                    AppTheme.colors.backgroundPrimary
-                  )
+                    backgroundColor: MaterialStateProperty.all(
+                        AppTheme.colors.backgroundPrimary
+                    )
                 ),
                 icon: Image.asset('assets/images/google.png'),
                 label: Text(
