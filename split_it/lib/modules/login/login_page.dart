@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:split_it/theme/app_theme.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -11,6 +11,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppTheme.colors.backgroundPrimary,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -23,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Text(
                     'Divida suas contas com seus amigos',
                     style: GoogleFonts.montserrat(
+                      color: AppTheme.colors.title,
                       fontSize: 40,
                       fontWeight: FontWeight.w700,
                     ),
@@ -38,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                 title: Text(
                   'Faça seu login com uma das contas abaixo',
                   style: GoogleFonts.inter(
+                    color: AppTheme.colors.button,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
@@ -46,10 +49,16 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 32,),
               ElevatedButton.icon(
                 onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    AppTheme.colors.backgroundPrimary
+                  )
+                ),
                 icon: Image.asset('assets/images/google.png'),
                 label: Text(
                   'Entrar com Google',
                   style: GoogleFonts.inter(
+                    color: AppTheme.colors.button,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
@@ -58,10 +67,16 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 12,),
               ElevatedButton.icon(
                 onPressed: () {},
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        AppTheme.colors.backgroundPrimary
+                    )
+                ),
                 icon: Image.asset('assets/images/apple.png'),
                 label: Text(
                   'Entrar com Apple',
                   style: GoogleFonts.inter(
+                    color: AppTheme.colors.button,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
