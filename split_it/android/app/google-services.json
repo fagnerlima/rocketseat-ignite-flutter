@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "441780451913",
+    "project_id": "split-it-rocketseat-fl",
+    "storage_bucket": "split-it-rocketseat-fl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441780451913:android:43341c6fa9199943e69d98",
+        "android_client_info": {
+          "package_name": "com.fagnerlima.rocketseat.ignite.split_it"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441780451913-va3lv1qfjnrivc3dg3udvu4qc2tjm52p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3IU9dNdt5M9vrfP0MRCKMOWYH3IV8Y1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441780451913-va3lv1qfjnrivc3dg3udvu4qc2tjm52p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
