@@ -5,7 +5,6 @@ import 'package:split_it/modules/login/models/user_model/user.dart';
 
 class LoginController {
   LoginState state = LoginStateEmpty();
-  User? user;
   VoidCallback onUpdate;
 
   LoginController({
@@ -24,9 +23,9 @@ class LoginController {
       onUpdate();
 
       final googleAccount = (await _googleSignIn.signIn())!;
-      user = User.google(googleAccount);
+      final user = User.google(googleAccount);
 
-      state = LoginStateSuccess(user: user!);
+      state = LoginStateSuccess(user: user);
       onUpdate();
     } catch (error) {
       state = LoginStateFailure(message: error.toString());
