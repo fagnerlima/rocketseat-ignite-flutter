@@ -52,15 +52,15 @@ class _LoginPageState extends State<LoginPage> {
                   onTap: googleSignIn,
                 ),
               ),
-              SizedBox(height: 12,),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: SocialButton(
-                  imagePath: 'assets/images/apple.png',
-                  label: 'Entrar com Apple',
-                  onTap: () {},
-                ),
-              ),
+              // SizedBox(height: 12,),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 32),
+              //   child: SocialButton(
+              //     imagePath: 'assets/images/apple.png',
+              //     label: 'Entrar com Apple',
+              //     onTap: () {},
+              //   ),
+              // ),
             ],
           )
         ],
