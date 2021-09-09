@@ -10,6 +10,10 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Image.network(user.photoUrl!),
+        ),
         title: Text(user.name!),
       ),
     );
