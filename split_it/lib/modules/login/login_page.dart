@@ -14,7 +14,14 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
-    controller = LoginController(onUpdate: () => setState(() {}));
+    controller = LoginController(onUpdate: () {
+      if (controller.state is LoginStateSuccess) {
+        Navigator.pushNamed(context, '/home');
+        return;
+      }
+
+      setState(() {});
+    });
     super.initState();
   }
 
