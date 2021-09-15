@@ -6,6 +6,7 @@ abstract class AppColors {
   Color get border;
   Color get button;
   Color get title;
+  Color get appBarTitle;
 }
 
 class AppColorsDefault extends AppColors {
@@ -23,4 +24,7 @@ class AppColorsDefault extends AppColors {
 
   @override
   Color get title => Color(0xFF40B28C);
+
+  @override
+  Color get appBarTitle => Color(0xFFFFFFFF);
 }
