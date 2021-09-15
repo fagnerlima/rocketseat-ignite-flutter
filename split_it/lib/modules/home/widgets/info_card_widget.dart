@@ -27,10 +27,17 @@ class InfoCardWidget extends StatelessWidget {
             height: 48,
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('A receber'),
+              Text(
+                'A receber',
+                style: AppTheme.textStyles.infoCardTitle,
+              ),
               SizedBox(height: 4,),
-              Text('R\$ 145,00'),
+              Text(
+                'R\$ 145,00',
+                style: AppTheme.textStyles.infoCardDetailIncome,
+              ),
             ],
           )
         ],

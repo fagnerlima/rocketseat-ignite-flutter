@@ -8,8 +8,12 @@ abstract class AppColors {
   Color get button;
   Color get icon;
   Color get iconBackgroundIncome;
+  Color get iconBackgroundExpense;
   Color get title;
   Color get appBarTitle;
+  Color get infoCardTitle;
+  Color get infoCardDetailIncome;
+  Color get infoCardDetailExpense;
 }
 
 class AppColorsDefault extends AppColors {
@@ -35,8 +39,20 @@ class AppColorsDefault extends AppColors {
   Color get iconBackgroundIncome => Color(0xFFE9F8F2);
 
   @override
+  Color get iconBackgroundExpense => Color(0xFFFDECEF);
+
+  @override
   Color get title => Color(0xFF40B28C);
 
   @override
   Color get appBarTitle => Color(0xFFFFFFFF);
+
+  @override
+  Color get infoCardTitle => Color(0xFF666666);
+
+  @override
+  Color get infoCardDetailIncome => Color(0xFF40B28C);
+
+  @override
+  Color get infoCardDetailExpense => Color(0xFFE83F5B);
 }
