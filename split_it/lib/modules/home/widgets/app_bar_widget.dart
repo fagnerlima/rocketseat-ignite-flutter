@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/home/widgets/add_button_widget.dart';
 import 'package:split_it/modules/login/models/user_model/user.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class AppBarWidget extends PreferredSize {
   final User user;
+  final VoidCallback onTapAddButton;
 
-  AppBarWidget({ required this.user }) : super(
+  AppBarWidget({
+    required this.user,
+    required this.onTapAddButton
+  }) : super(
     child: Container(
       height: 250,
       color: AppTheme.colors.backgroundSecondary,
@@ -20,6 +25,7 @@ class AppBarWidget extends PreferredSize {
             user.name!,
             style: AppTheme.textStyles.appBar,
           ),
+          trailing: AddButtonWidget(onTap: onTapAddButton,),
         ),
       ),
     ),

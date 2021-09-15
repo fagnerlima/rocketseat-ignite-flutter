@@ -15,7 +15,10 @@ class _HomePageState extends State<HomePage> {
     final User user = ModalRoute.of(context)!.settings.arguments as User;
 
     return Scaffold(
-      appBar: AppBarWidget(user: user,)
+      appBar: AppBarWidget(
+        user: user,
+        onTapAddButton: () => print('onTapAddButton'),
+      )
     );
   }
 }

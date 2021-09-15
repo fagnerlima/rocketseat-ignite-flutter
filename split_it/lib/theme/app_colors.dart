@@ -4,7 +4,9 @@ abstract class AppColors {
   Color get backgroundPrimary;
   Color get backgroundSecondary;
   Color get border;
+  Color get borderWhite;
   Color get button;
+  Color get icon;
   Color get title;
   Color get appBarTitle;
 }
@@ -20,7 +22,13 @@ class AppColorsDefault extends AppColors {
   Color get border => Color(0xFFCCCCCC);
 
   @override
+  Color get borderWhite => Color(0xFFFFFFFF);
+
+  @override
   Color get button => Color(0xFF666666);
+
+  @override
+  Color get icon => Color(0xFFF5F5F5);
 
   @override
   Color get title => Color(0xFF40B28C);
