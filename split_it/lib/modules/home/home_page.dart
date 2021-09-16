@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         user: user,
         onTapAddButton: () => print('onTapAddButton'),
       ),
-      body: InfoCardWidget(),
+      body: InfoCardWidget(value: 10.5,),
     );
   }
 }

@@ -3,7 +3,22 @@ import 'package:split_it/modules/home/widgets/icon_dollar_widget.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class InfoCardWidget extends StatelessWidget {
-  const InfoCardWidget({Key? key}) : super(key: key);
+  final double value;
+
+  const InfoCardWidget({
+    Key? key,
+    required this.value
+  }) : super(key: key);
+
+  String get title => value >= 0 ? 'A receber' : 'A pagar';
+
+  TextStyle get textStyle => value >= 0
+      ? AppTheme.textStyles.infoCardDetailIncome
+      : AppTheme.textStyles.infoCardDetailExpense;
+
+  IconDollarType get iconDollarType => value >= 0
+      ? IconDollarType.income
+      : IconDollarType.expense;
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +37,18 @@ class InfoCardWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          IconDollarWidget(type: IconDollarType.income),
+          IconDollarWidget(type: iconDollarType),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'A receber',
+                title,
                 style: AppTheme.textStyles.infoCardTitle,
               ),
               SizedBox(height: 4,),
               Text(
                 'R\$ 145,00',
-                style: AppTheme.textStyles.infoCardDetailIncome,
+                style: textStyle,
               ),
             ],
           )
