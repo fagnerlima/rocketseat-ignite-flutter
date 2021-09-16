@@ -47,7 +47,7 @@ class InfoCardWidget extends StatelessWidget {
               ),
               SizedBox(height: 4,),
               Text(
-                'R\$ 145,00',
+                'R\$ $value',
                 style: textStyle,
               ),
             ],

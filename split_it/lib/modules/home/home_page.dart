@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/modules/home/widgets/app_bar_widget.dart';
-import 'package:split_it/modules/home/widgets/info_card_widget.dart';
 import 'package:split_it/modules/login/models/user_model/user.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +19,6 @@ class _HomePageState extends State<HomePage> {
         user: user,
         onTapAddButton: () => print('onTapAddButton'),
       ),
-      body: InfoCardWidget(value: 10.5,),
     );
   }
 }
