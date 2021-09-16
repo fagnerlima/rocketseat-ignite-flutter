@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/home/widgets/icon_dollar_widget.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class InfoCardWidget extends StatelessWidget {
@@ -21,21 +22,7 @@ class InfoCardWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: AppTheme.colors.iconBackgroundIncome,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            width: 48,
-            height: 48,
-            child: Center(
-              child: Image.asset(
-                'assets/images/dollar-income.png',
-                width: 32,
-                height: 32,
-              ),
-            ),
-          ),
+          IconDollarWidget(type: IconDollarType.income),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
