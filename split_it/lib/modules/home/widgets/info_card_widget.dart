@@ -22,9 +22,19 @@ class InfoCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            color: AppTheme.colors.iconBackgroundIncome,
+            decoration: BoxDecoration(
+              color: AppTheme.colors.iconBackgroundIncome,
+              borderRadius: BorderRadius.circular(10),
+            ),
             width: 48,
             height: 48,
+            child: Center(
+              child: Image.asset(
+                'assets/images/dollar-income.png',
+                width: 32,
+                height: 32,
+              ),
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
