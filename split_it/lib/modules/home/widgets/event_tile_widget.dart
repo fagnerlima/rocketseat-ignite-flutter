@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/modules/home/widgets/icon_dollar_widget.dart';
+import 'package:split_it/shared/models/event.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class EventTileWidget extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final double value;
-  final int people;
+  final Event data;
 
   const EventTileWidget({
     Key? key,
-    required this.title,
-    required this.subtitle,
-    required this.value,
-    required this.people
+    required this.data
   }) : super(key: key);
 
-  IconDollarType get iconDollarType => value >= 0
+  IconDollarType get iconDollarType => data.value >= 0
       ? IconDollarType.income
       : IconDollarType.expense;
 
@@ -34,23 +29,23 @@ class EventTileWidget extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Text(
-                    title,
+                    data.title,
                     style: AppTheme.textStyles.eventTileTitle,
                   ),
                   subtitle: Text(
-                    subtitle,
-                      style: AppTheme.textStyles.eventTileSubtitle
+                    data.created.toString(),
+                    style: AppTheme.textStyles.eventTileSubtitle
                   ),
                   trailing: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'R\$ $value',
+                        'R\$ ${data.value}',
                           style: AppTheme.textStyles.eventTileValue
                       ),
                       SizedBox(height: 5,),
                       Text(
-                        '$people amigo${people > 1 ? 's' : ''}',
+                        '${data.people} amigo${data.people > 1 ? 's' : ''}',
                           style: AppTheme.textStyles.eventTilePeople
                       ),
                     ],

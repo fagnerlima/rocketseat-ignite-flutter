@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:split_it/modules/home/widgets/app_bar_widget.dart';
 import 'package:split_it/modules/home/widgets/event_tile_widget.dart';
 import 'package:split_it/modules/login/models/user_model/user.dart';
+import 'package:split_it/shared/models/event.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,10 +24,12 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: EventTileWidget(
-          title: 'Churrasco',
-          subtitle: '5 de maio',
-          value: 90,
-          people: 2,
+          data: Event(
+            title: 'Churrasco',
+            created: DateTime.now(),
+            value: 90,
+            people: 2,
+          )
         ),
       ),
     );
