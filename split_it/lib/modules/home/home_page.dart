@@ -23,8 +23,8 @@ class _HomePageState extends State<HomePage> {
       body: EventTileWidget(
         title: 'Churrasco',
         subtitle: '5 de maio',
-        value: 32,
-        people: 1,
+        value: 90,
+        people: 2,
       ),
     );
   }

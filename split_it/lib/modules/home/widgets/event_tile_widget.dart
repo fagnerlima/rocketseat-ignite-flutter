@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/modules/home/widgets/icon_dollar_widget.dart';
+import 'package:split_it/theme/app_theme.dart';
 
 class EventTileWidget extends StatelessWidget {
   final String title;
@@ -22,14 +23,26 @@ class EventTileWidget extends StatelessWidget {
         IconDollarWidget(type: IconDollarType.income),
         Expanded(
           child: ListTile(
-            title: Text(title),
-            subtitle: Text(subtitle),
+            title: Text(
+              title,
+              style: AppTheme.textStyles.eventTileTitle,
+            ),
+            subtitle: Text(
+              subtitle,
+                style: AppTheme.textStyles.eventTileSubtitle
+            ),
             trailing: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('R\$ $value'),
+                Text(
+                  'R\$ $value',
+                    style: AppTheme.textStyles.eventTileValue
+                ),
                 SizedBox(height: 5,),
-                Text('$people amigo(s)'),
+                Text(
+                  '$people amigo${people > 1 ? 's' : ''}',
+                    style: AppTheme.textStyles.eventTilePeople
+                ),
               ],
             ),
           )
