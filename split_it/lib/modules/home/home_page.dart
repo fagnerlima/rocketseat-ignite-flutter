@@ -12,6 +12,51 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<Event> events = [
+    Event(
+      title: 'Churrasco',
+      created: DateTime.now(),
+      value: 90,
+      people: 2,
+    ),
+    Event(
+      title: 'Churrasco',
+      created: DateTime.now(),
+      value: 90,
+      people: 2,
+    ),
+    Event(
+      title: 'Churrasco',
+      created: DateTime.now(),
+      value: -80,
+      people: 1,
+    ),
+    Event(
+      title: 'Churrasco',
+      created: DateTime.now(),
+      value: 90,
+      people: 2,
+    ),
+    Event(
+      title: 'Churrasco',
+      created: DateTime.now(),
+      value: -80,
+      people: 1,
+    ),
+    Event(
+      title: 'Churrasco',
+      created: DateTime.now(),
+      value: 90,
+      people: 2,
+    ),
+    Event(
+      title: 'Churrasco',
+      created: DateTime.now(),
+      value: -80,
+      people: 1,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final User user = ModalRoute.of(context)!.settings.arguments as User;
@@ -23,13 +68,14 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: EventTileWidget(
-          data: Event(
-            title: 'Churrasco',
-            created: DateTime.now(),
-            value: 90,
-            people: 2,
-          )
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ...events
+                  .map((event) => EventTileWidget(data: event))
+                  .toList()
+            ],
+          ),
         ),
       ),
     );
