@@ -18,6 +18,7 @@ abstract class AppColors {
   Color get eventTileSubtitle;
   Color get eventTileValue;
   Color get eventTilePeople;
+  Color get divider;
 }
 
 class AppColorsDefault extends AppColors {
@@ -71,4 +72,7 @@ class AppColorsDefault extends AppColors {
 
   @override
   Color get eventTilePeople => Color(0xFFA4B2AE);
+
+  @override
+  Color get divider => Color(0xFF666666);
 }

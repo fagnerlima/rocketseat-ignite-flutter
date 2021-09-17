@@ -16,32 +16,48 @@ class EventTileWidget extends StatelessWidget {
     required this.people
   }) : super(key: key);
 
+  IconDollarType get iconDollarType => value >= 0
+      ? IconDollarType.income
+      : IconDollarType.expense;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconDollarWidget(type: IconDollarType.income),
+        IconDollarWidget(type: iconDollarType),
         Expanded(
-          child: ListTile(
-            title: Text(
-              title,
-              style: AppTheme.textStyles.eventTileTitle,
-            ),
-            subtitle: Text(
-              subtitle,
-                style: AppTheme.textStyles.eventTileSubtitle
-            ),
-            trailing: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  'R\$ $value',
-                    style: AppTheme.textStyles.eventTileValue
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    title,
+                    style: AppTheme.textStyles.eventTileTitle,
+                  ),
+                  subtitle: Text(
+                    subtitle,
+                      style: AppTheme.textStyles.eventTileSubtitle
+                  ),
+                  trailing: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'R\$ $value',
+                          style: AppTheme.textStyles.eventTileValue
+                      ),
+                      SizedBox(height: 5,),
+                      Text(
+                        '$people amigo${people > 1 ? 's' : ''}',
+                          style: AppTheme.textStyles.eventTilePeople
+                      ),
+                    ],
+                  ),
                 ),
-                SizedBox(height: 5,),
-                Text(
-                  '$people amigo${people > 1 ? 's' : ''}',
-                    style: AppTheme.textStyles.eventTilePeople
+                Divider(
+                  color: AppTheme.colors.divider,
                 ),
               ],
             ),
