@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/home/repositories/home_repository.dart';
+import 'package:split_it/modules/home/repositories/home_repository_mock.dart';
 import 'package:split_it/modules/home/widgets/app_bar_widget.dart';
 import 'package:split_it/modules/home/widgets/event_tile_widget.dart';
 import 'package:split_it/modules/login/models/user_model/user.dart';
@@ -12,50 +14,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Event> events = [
-    Event(
-      title: 'Churrasco',
-      created: DateTime.now(),
-      value: 90,
-      people: 2,
-    ),
-    Event(
-      title: 'Churrasco',
-      created: DateTime.now(),
-      value: 90,
-      people: 2,
-    ),
-    Event(
-      title: 'Churrasco',
-      created: DateTime.now(),
-      value: -80,
-      people: 1,
-    ),
-    Event(
-      title: 'Churrasco',
-      created: DateTime.now(),
-      value: 90,
-      people: 2,
-    ),
-    Event(
-      title: 'Churrasco',
-      created: DateTime.now(),
-      value: -80,
-      people: 1,
-    ),
-    Event(
-      title: 'Churrasco',
-      created: DateTime.now(),
-      value: 90,
-      people: 2,
-    ),
-    Event(
-      title: 'Churrasco',
-      created: DateTime.now(),
-      value: -80,
-      people: 1,
-    ),
-  ];
+  final List<Event> events = [];
+
+  late HomeRepository repository;
+
+  @override
+  void initState() {
+    repository = HomeRepositoryMock();
+    getEvents();
+    super.initState();
+  }
+
+  void getEvents() async {
+    final response = await repository.getEvents();
+    setState(() {
+      events.addAll(response);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
