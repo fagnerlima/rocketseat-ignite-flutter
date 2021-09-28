@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:split_it/modules/home/repositories/home_repository.dart';
-import 'package:split_it/modules/home/repositories/home_repository_mock.dart';
+import 'package:split_it/modules/home/home_controller.dart';
 import 'package:split_it/modules/home/widgets/app_bar_widget.dart';
 import 'package:split_it/modules/home/widgets/event_tile_widget.dart';
 import 'package:split_it/modules/login/models/user_model/user.dart';
-import 'package:split_it/shared/models/event.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,22 +12,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Event> events = [];
-
-  late HomeRepository repository;
+  final controller = HomeController();
 
   @override
   void initState() {
-    repository = HomeRepositoryMock();
-    getEvents();
+    controller.getEvents(() => setState);
     super.initState();
-  }
-
-  void getEvents() async {
-    final response = await repository.getEvents();
-    setState(() {
-      events.addAll(response);
-    });
   }
 
   @override
@@ -46,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ...events
+              ...controller.events
                   .map((event) => EventTileWidget(data: event))
                   .toList()
             ],
