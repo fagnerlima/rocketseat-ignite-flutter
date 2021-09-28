@@ -1,11 +1,11 @@
 import 'dart:ui';
 
+import 'package:split_it/modules/home/home_state.dart';
 import 'package:split_it/modules/home/repositories/home_repository.dart';
 import 'package:split_it/modules/home/repositories/home_repository_mock.dart';
-import 'package:split_it/shared/models/event.dart';
 
 class HomeController {
-  final List<Event> events = [];
+  HomeState state = HomeStateEmpty();
 
   late HomeRepository repository;
 
@@ -14,8 +14,10 @@ class HomeController {
   }
 
   getEvents(VoidCallback onUpdate) async {
+    state = HomeStateLoading();
+    onUpdate();
     final response = await repository.getEvents();
-    events.addAll(response);
+    state = HomeStateSuccess(events: response);
     onUpdate();
   }
 }
