@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/modules/home/home_controller.dart';
 import 'package:split_it/modules/home/home_state.dart';
-import 'package:split_it/modules/home/widgets/app_bar_widget.dart';
+import 'package:split_it/modules/home/widgets/app_bar/app_bar_widget.dart';
 import 'package:split_it/modules/home/widgets/event_tile_widget.dart';
 import 'package:split_it/modules/login/models/user_model/user.dart';
 
