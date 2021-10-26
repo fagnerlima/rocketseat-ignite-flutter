@@ -21,13 +21,13 @@ class HomeController {
     try {
       final response = await repository.getEvents();
       state = HomeStateSuccess(events: response);
-      update();
     } catch (e) {
       state = HomeStateFailure(message: e.toString());
+    } finally {
       update();
+      onUpdate();
     }
 
-    onUpdate();
   }
 
   void update() {

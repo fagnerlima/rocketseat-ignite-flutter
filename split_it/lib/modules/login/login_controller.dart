@@ -22,9 +22,9 @@ class LoginController {
 
       final user = await service.googleSignIn();
       state = LoginStateSuccess(user: user);
-      update();
     } catch (error) {
       state = LoginStateFailure(message: error.toString());
+    } finally {
       update();
     }
   }
