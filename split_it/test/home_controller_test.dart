@@ -33,7 +33,7 @@ void main() {
             people: 1
           )
         ]);
-    await controller.getEvents(() {});
+    await controller.getEvents();
 
     expect(states[0], isInstanceOf<HomeStateLoading>());
     expect(states[1], isInstanceOf<HomeStateSuccess>());
@@ -48,7 +48,7 @@ void main() {
 
     when(repository.getEvents)
         .thenThrow('Erro');
-    await controller.getEvents(() {});
+    await controller.getEvents();
 
     expect(states[0], isInstanceOf<HomeStateLoading>());
     expect(states[1], isInstanceOf<HomeStateFailure>());
