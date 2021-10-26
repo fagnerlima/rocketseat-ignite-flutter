@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:split_it/modules/home/repositories/home_repository.dart';
 import 'package:split_it/modules/home/repositories/home_repository_mock.dart';
@@ -14,23 +13,20 @@ class AppBarController {
     this.homeRepository = homeRepository ?? HomeRepositoryMock();
   }
 
-  getDashboard(VoidCallback onUpdate) async {
-    state = AppBarStateLoading();
-    update();
-    onUpdate();
+  getDashboard() async {
+    update(AppBarStateLoading());
 
     try {
       final response = await homeRepository.getDashboard();
-      state = AppBarStateSuccess(dashboard: response);
+      update(AppBarStateSuccess(dashboard: response));
     } catch (e) {
-      state = AppBarStateFailure(message: e.toString());
-    } finally {
-      update();
-      onUpdate();
+      update(AppBarStateFailure(message: e.toString()));
     }
   }
 
-  void update() {
+  void update(AppBarState state) {
+    this.state = state;
+
     if (onListen != null) {
       onListen!(state);
     }

@@ -26,7 +26,7 @@ void main() {
 
     when(homeRepository.getDashboard)
         .thenAnswer((invocation) async => Dashboard(income: 100, expense: 50));
-    await controller.getDashboard(() {});
+    await controller.getDashboard();
 
     expect(states[0], isInstanceOf<AppBarStateLoading>());
     expect(states[1], isInstanceOf<AppBarStateSuccess>());
@@ -41,7 +41,7 @@ void main() {
 
     when(homeRepository.getDashboard)
         .thenThrow('Erro');
-    await controller.getDashboard(() {});
+    await controller.getDashboard();
 
     expect(states[0], isInstanceOf<AppBarStateLoading>());
     expect(states[1], isInstanceOf<AppBarStateFailure>());
