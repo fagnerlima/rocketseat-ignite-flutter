@@ -8,16 +8,35 @@ class HomeController {
   HomeState state = HomeStateEmpty();
 
   late HomeRepository repository;
+  Function(HomeState state)? onListen;
 
-  HomeController() {
-    repository = HomeRepositoryMock();
+  HomeController({ HomeRepository? repository }) {
+    this.repository = repository ?? HomeRepositoryMock();
   }
 
   getEvents(VoidCallback onUpdate) async {
     state = HomeStateLoading();
+    update();
+
+    try {
+      final response = await repository.getEvents();
+      state = HomeStateSuccess(events: response);
+      update();
+    } catch (e) {
+      state = HomeStateFailure(message: e.toString());
+      update();
+    }
+
     onUpdate();
-    final response = await repository.getEvents();
-    state = HomeStateSuccess(events: response);
-    onUpdate();
+  }
+
+  void update() {
+    if (onListen != null) {
+      onListen!(state);
+    }
+  }
+
+  void listen(Function(HomeState state) onChange) {
+    onListen = onChange;
   }
 }
