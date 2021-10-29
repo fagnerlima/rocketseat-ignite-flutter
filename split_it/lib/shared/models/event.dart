@@ -1,13 +1,13 @@
 class Event {
-  final String title;
-  final DateTime created;
-  final double value;
-  final int people;
+  final String? title;
+  final DateTime? created;
+  final double? value;
+  final int? people;
 
   const Event({
-    required this.title,
-    required this.created,
-    required this.value,
-    required this.people,
+    this.title,
+    this.created,
+    this.value,
+    this.people,
   });
 }

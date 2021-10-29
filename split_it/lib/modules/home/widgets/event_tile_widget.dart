@@ -14,7 +14,7 @@ class EventTileWidget extends StatelessWidget {
     this.isLoading = false
   }) : super(key: key);
 
-  IconDollarType get iconDollarType => data.value >= 0
+  IconDollarType get iconDollarType => data.value! >= 0
       ? IconDollarType.income
       : IconDollarType.expense;
 
@@ -66,7 +66,7 @@ class EventTileWidget extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Text(
-                    data.title,
+                    data.title!,
                     style: AppTheme.textStyles.eventTileTitle,
                   ),
                   subtitle: Text(
@@ -82,7 +82,7 @@ class EventTileWidget extends StatelessWidget {
                       ),
                       SizedBox(height: 5,),
                       Text(
-                        '${data.people} amigo${data.people > 1 ? 's' : ''}',
+                        '${data.people} amigo${data.people! > 1 ? 's' : ''}',
                           style: AppTheme.textStyles.eventTilePeople
                       ),
                     ],

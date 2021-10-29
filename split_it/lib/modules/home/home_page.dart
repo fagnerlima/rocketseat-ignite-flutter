@@ -4,6 +4,7 @@ import 'package:split_it/modules/home/home_state.dart';
 import 'package:split_it/modules/home/widgets/app_bar/app_bar_widget.dart';
 import 'package:split_it/modules/home/widgets/event_tile_widget.dart';
 import 'package:split_it/modules/login/models/user_model/user.dart';
+import 'package:split_it/shared/models/event.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -37,7 +38,10 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               if (controller.state is HomeStateLoading)
-                CircularProgressIndicator()
+                ...List.generate(4, (index) => EventTileWidget(
+                  data: Event(),
+                  isLoading: true,
+                ))
               else if (controller.state is HomeStateSuccess)
                 ...(controller.state as HomeStateSuccess).events
                   .map((event) => EventTileWidget(data: event))
