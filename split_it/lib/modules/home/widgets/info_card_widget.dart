@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:split_it/modules/home/widgets/icon_dollar_widget.dart';
+import 'package:split_it/modules/home/widgets/loading_widget.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class InfoCardWidget extends StatelessWidget {
@@ -51,17 +51,7 @@ class InfoCardWidget extends StatelessWidget {
               SizedBox(height: 4,),
               if (isLoading)
                 ...[
-                  SizedBox(
-                    width: 94,
-                    height: 24,
-                    child: Shimmer.fromColors(
-                      baseColor: Colors.grey.shade100,
-                      highlightColor: Colors.grey.shade300,
-                      child: Container(
-                        color: Colors.white,
-                      ),
-                    ),
-                  )
+                  LoadingWidget(size: Size(94, 24))
               ]
               else
                 ...[
