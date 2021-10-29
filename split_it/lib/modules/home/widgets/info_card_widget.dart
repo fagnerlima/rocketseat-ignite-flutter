@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:split_it/modules/home/widgets/icon_dollar_widget.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class InfoCardWidget extends StatelessWidget {
   final double value;
+  final bool isLoading;
 
   const InfoCardWidget({
     Key? key,
-    required this.value
+    required this.value,
+    this.isLoading = false
   }) : super(key: key);
 
   String get title => value >= 0 ? 'A receber' : 'A pagar';
@@ -46,10 +49,27 @@ class InfoCardWidget extends StatelessWidget {
                 style: AppTheme.textStyles.infoCardTitle,
               ),
               SizedBox(height: 4,),
-              Text(
-                'R\$ $value',
-                style: textStyle,
-              ),
+              if (isLoading)
+                ...[
+                  SizedBox(
+                    width: 94,
+                    height: 24,
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.grey.shade100,
+                      highlightColor: Colors.grey.shade300,
+                      child: Container(
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+              ]
+              else
+                ...[
+                  Text(
+                    'R\$ $value',
+                    style: textStyle,
+                  ),
+                ]
             ],
           )
         ],
