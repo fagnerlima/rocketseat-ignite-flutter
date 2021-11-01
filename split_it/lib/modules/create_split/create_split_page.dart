@@ -8,12 +8,44 @@ class CreateSplitPage extends StatefulWidget {
 }
 
 class _CreateSplitPageState extends State<CreateSplitPage> {
+  final pages = [
+    Container(color: Colors.red,),
+    Container(color: Colors.green,),
+    Container(color: Colors.blue,),
+  ];
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Create Split Page'),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => backPage(),
+        ),
+        actions: [
+          Text('${index + 1} - ${pages.length}')
+        ],
       ),
+      body: pages[index],
+      floatingActionButton: index < pages.length - 1
+        ? FloatingActionButton(
+            onPressed: () => nextPage(),
+            child: Icon(Icons.add),
+          )
+        : Container(),
     );
+  }
+
+  backPage() {
+    if (index > 0) {
+      setState(() => index--);
+    }
+  }
+
+  nextPage() {
+    if (index < pages.length - 1) {
+      setState(() => index++);
+    }
   }
 }
