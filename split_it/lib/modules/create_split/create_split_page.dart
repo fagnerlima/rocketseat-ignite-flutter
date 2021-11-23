@@ -19,6 +19,7 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppTheme.colors.backgroundPrimary,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: SafeArea(
@@ -26,20 +27,29 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () => backPage(),
+              Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: AppTheme.colors.backButton,
+                  ),
+                  onPressed: () => backPage(),
+                ),
               ),
-              Text.rich(TextSpan(
-                text: '${index + 1}',
-                style: AppTheme.textStyles.stepperIndicatorPrimary,
-                children: [
-                  TextSpan(
-                    text: ' - ${pages.length}',
-                    style: AppTheme.textStyles.stepperIndicatorSecondary,
-                  )
-                ]
-              )),
+              Padding(
+                padding: const EdgeInsets.only(right: 24),
+                child: Text.rich(TextSpan(
+                  text: '${index + 1}'.padLeft(2, '0'),
+                  style: AppTheme.textStyles.stepperIndicatorPrimary,
+                  children: [
+                    TextSpan(
+                      text: ' - ${pages.length.toString().padLeft(2, '0')}',
+                      style: AppTheme.textStyles.stepperIndicatorSecondary,
+                    )
+                  ]
+                )),
+              ),
             ],
           ),
         ),
