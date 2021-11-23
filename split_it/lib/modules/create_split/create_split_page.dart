@@ -55,12 +55,43 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
         ),
       ),
       body: pages[index],
-      floatingActionButton: index < pages.length - 1
-        ? FloatingActionButton(
-            onPressed: () => nextPage(),
-            child: Icon(Icons.add),
-          )
-        : Container(),
+      bottomNavigationBar: SafeArea(
+        bottom: true,
+        child: Container(
+          height: 60,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      onPressed: backPage,
+                      child: Text(
+                        'Cancelar',
+                        style: AppTheme.textStyles.button,
+                      )
+                    ),
+                  ),
+                  Container(
+                    width: 1,
+                    height: 60,
+                    color: AppTheme.colors.divider,
+                  ),
+                  Expanded(
+                    child: TextButton(
+                      onPressed: nextPage,
+                      child: Text(
+                        'Continuar',
+                        style: AppTheme.textStyles.button,
+                      )
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
