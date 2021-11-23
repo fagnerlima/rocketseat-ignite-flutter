@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/theme/app_theme.dart';
 
 class CreateSplitPage extends StatefulWidget {
   const CreateSplitPage({Key? key}) : super(key: key);
@@ -29,7 +30,16 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
                 icon: Icon(Icons.arrow_back),
                 onPressed: () => backPage(),
               ),
-              Text('${index + 1} - ${pages.length}')
+              Text.rich(TextSpan(
+                text: '${index + 1}',
+                style: AppTheme.textStyles.stepperIndicatorPrimary,
+                children: [
+                  TextSpan(
+                    text: ' - ${pages.length}',
+                    style: AppTheme.textStyles.stepperIndicatorSecondary,
+                  )
+                ]
+              )),
             ],
           ),
         ),

@@ -19,6 +19,8 @@ abstract class AppColors {
   Color get eventTileValue;
   Color get eventTilePeople;
   Color get divider;
+  Color get stepperIndicatorPrimary;
+  Color get stepperIndicatorSecondary;
 }
 
 class AppColorsDefault extends AppColors {
@@ -75,4 +77,10 @@ class AppColorsDefault extends AppColors {
 
   @override
   Color get divider => Color(0xFF666666);
+
+  @override
+  Color get stepperIndicatorPrimary => Color(0xFF3CAB82);
+
+  @override
+  Color get stepperIndicatorSecondary => Color(0xFF666666);
 }
