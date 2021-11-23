@@ -18,14 +18,21 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => backPage(),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: SafeArea(
+          top: true,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () => backPage(),
+              ),
+              Text('${index + 1} - ${pages.length}')
+            ],
+          ),
         ),
-        actions: [
-          Text('${index + 1} - ${pages.length}')
-        ],
       ),
       body: pages[index],
       floatingActionButton: index < pages.length - 1
