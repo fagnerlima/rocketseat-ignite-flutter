@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/create_split/steps/one/step_one_page.dart';
 import 'package:split_it/modules/create_split/widgets/bottom_stepper_bar.dart';
 import 'package:split_it/modules/create_split/widgets/create_split_app_bar.dart';
 import 'package:split_it/theme/app_theme.dart';
@@ -12,7 +13,7 @@ class CreateSplitPage extends StatefulWidget {
 
 class _CreateSplitPageState extends State<CreateSplitPage> {
   final pages = [
-    Container(color: Colors.red,),
+    StepOnePage(),
     Container(color: Colors.green,),
     Container(color: Colors.blue,),
   ];
