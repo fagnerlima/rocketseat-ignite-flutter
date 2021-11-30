@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/create_split/widgets/stepper_next_button.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class CreateSplitPage extends StatefulWidget {
@@ -63,29 +64,19 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
             children: [
               Row(
                 children: [
-                  Expanded(
-                    child: TextButton(
-                      onPressed: backPage,
-                      child: Text(
-                        'Cancelar',
-                        style: AppTheme.textStyles.stepperNextButton,
-                      )
-                    ),
+                  StepperNextButtonWidget(
+                    label: 'Cancelar',
+                    onTap: backPage
                   ),
                   Container(
                     width: 1,
                     height: 60,
                     color: AppTheme.colors.divider,
                   ),
-                  Expanded(
-                    child: TextButton(
-                      onPressed: nextPage,
-                      child: Text(
-                        'Continuar',
-                        style: AppTheme.textStyles.stepperNextButton,
-                      )
-                    ),
-                  ),
+                  StepperNextButtonWidget(
+                    label: 'Continuar',
+                    onTap: nextPage
+                  )
                 ],
               ),
             ],
