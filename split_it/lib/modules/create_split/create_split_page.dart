@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/create_split/widgets/bottom_stepper_bar.dart';
 import 'package:split_it/modules/create_split/widgets/create_split_app_bar.dart';
-import 'package:split_it/modules/create_split/widgets/stepper_next_button.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class CreateSplitPage extends StatefulWidget {
@@ -28,32 +28,9 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
         size: pages.length,
       ),
       body: pages[index],
-      bottomNavigationBar: SafeArea(
-        bottom: true,
-        child: Container(
-          height: 60,
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  StepperNextButtonWidget(
-                    label: 'Cancelar',
-                    onTap: backPage
-                  ),
-                  Container(
-                    width: 1,
-                    height: 60,
-                    color: AppTheme.colors.divider,
-                  ),
-                  StepperNextButtonWidget(
-                    label: 'Continuar',
-                    onTap: nextPage
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
+      bottomNavigationBar: BottomStepperBarWidget(
+        onTapCancel: backPage,
+        onTapNext: nextPage,
       ),
     );
   }
