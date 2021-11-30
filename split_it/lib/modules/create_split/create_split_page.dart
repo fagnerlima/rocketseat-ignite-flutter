@@ -68,7 +68,7 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
                       onPressed: backPage,
                       child: Text(
                         'Cancelar',
-                        style: AppTheme.textStyles.button,
+                        style: AppTheme.textStyles.stepperNextButton,
                       )
                     ),
                   ),
@@ -82,7 +82,7 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
                       onPressed: nextPage,
                       child: Text(
                         'Continuar',
-                        style: AppTheme.textStyles.button,
+                        style: AppTheme.textStyles.stepperNextButton,
                       )
                     ),
                   ),
