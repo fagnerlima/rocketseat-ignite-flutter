@@ -23,6 +23,10 @@ abstract class AppColors {
   Color get stepperIndicatorSecondary;
   Color get backButton;
   Color get stepperNextButton;
+  Color get stepperTitle;
+  Color get stepperSubtitle;
+  Color get hintTextField;
+  Color get textField;
 }
 
 class AppColorsDefault extends AppColors {
@@ -91,4 +95,16 @@ class AppColorsDefault extends AppColors {
 
   @override
   Color get stepperNextButton => Color(0xFF455250);
+
+  @override
+  Color get stepperTitle => Color(0xFF454250);
+
+  @override
+  Color get stepperSubtitle => Color(0xFF454250);
+
+  @override
+  Color get hintTextField => Color(0xFF666666);
+
+  @override
+  Color get textField => Color(0xFF455250);
 }

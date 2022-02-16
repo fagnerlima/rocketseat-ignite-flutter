@@ -27,6 +27,7 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Por padrão criamos todas as páginas com Scaffold
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
