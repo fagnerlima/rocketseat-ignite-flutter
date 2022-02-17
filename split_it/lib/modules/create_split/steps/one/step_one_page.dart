@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/create_split/widgets/stepper_title.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class StepOnePage extends StatefulWidget {
@@ -18,18 +19,9 @@ class _StepOnePageState extends State<StepOnePage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text.rich(
-          TextSpan(
-            text: 'Qual o nome',
-            style: AppTheme.textStyles.stepperTitle,
-            children: [
-              TextSpan(
-                text: '\ndo evento?',
-                style: AppTheme.textStyles.stepperSubtitle
-              )
-            ]
-          ),
-          textAlign: TextAlign.center,
+        StepperTitleWidget(
+          title: 'Qual o nome',
+          subtitle: 'do evento?'
         ),
         SizedBox(height: 40,),
         Padding(
