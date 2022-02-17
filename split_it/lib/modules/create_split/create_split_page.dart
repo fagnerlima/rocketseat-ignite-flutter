@@ -25,7 +25,7 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
     super.initState();
     pages = [
       StepOnePage(
-        onChange: (value) {
+        onChanged: (value) {
           controller.eventName = value;
           setState(() {});
         },

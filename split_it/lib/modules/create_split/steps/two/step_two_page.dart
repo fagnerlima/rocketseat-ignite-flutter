@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/create_split/widgets/stepper_input_text.dart';
 import 'package:split_it/modules/create_split/widgets/stepper_title.dart';
 
 class StepTwoPage extends StatefulWidget {
@@ -16,6 +17,11 @@ class _StepTwoPageState extends State<StepTwoPage> {
         StepperTitleWidget(
           title: 'Com quem',
           subtitle: 'você quer dividir?'
+        ),
+        SizedBox(height: 40,),
+        StepperInputTextWidget(
+          onChanged: (value) {},
+          hintText: 'Nome da pessoa',
         )
       ],
     );
