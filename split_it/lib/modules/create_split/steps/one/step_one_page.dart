@@ -27,11 +27,25 @@ class _StepOnePageState extends State<StepOnePage> {
           textAlign: TextAlign.center,
         ),
         SizedBox(height: 40,),
-        TextField(
-          style: AppTheme.textStyles.textField,
-          decoration: InputDecoration(
-            hintText: 'Ex: Churrasco',
-            hintStyle: AppTheme.textStyles.hintTextField,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 64),
+          child: TextField(
+            textAlign: TextAlign.center,
+            style: AppTheme.textStyles.textField,
+            cursorColor: AppTheme.colors.backgroundSecondary,
+            decoration: InputDecoration(
+              hintText: 'Ex: Churrasco',
+              hintStyle: AppTheme.textStyles.hintTextField,
+              border: UnderlineInputBorder(
+                borderSide: BorderSide(color: AppTheme.colors.inputBorder)
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: AppTheme.colors.inputBorder)
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: AppTheme.colors.inputBorder)
+              ),
+            ),
           ),
         )
       ],
