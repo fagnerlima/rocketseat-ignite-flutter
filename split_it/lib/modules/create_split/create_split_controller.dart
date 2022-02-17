@@ -3,7 +3,7 @@ class CreateSplitController {
 
   set eventName(value) => _eventName = value;
 
-  bool enabledNavigateButton() {
-    return _eventName.isNotEmpty;
+  bool disabledNavigateButton() {
+    return _eventName.isEmpty;
   }
 }
