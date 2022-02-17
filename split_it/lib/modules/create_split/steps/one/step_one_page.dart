@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class StepOnePage extends StatefulWidget {
-  const StepOnePage({Key? key}) : super(key: key);
+  final void Function(String value) onChange;
+
+  const StepOnePage({
+    Key? key,
+    required this.onChange
+  }) : super(key: key);
 
   @override
   _StepOnePageState createState() => _StepOnePageState();
@@ -30,6 +35,7 @@ class _StepOnePageState extends State<StepOnePage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 64),
           child: TextField(
+            onChanged: widget.onChange,
             textAlign: TextAlign.center,
             style: AppTheme.textStyles.textField,
             cursorColor: AppTheme.colors.backgroundSecondary,
