@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/theme/app_theme.dart';
 
-class StepperTitleWidget extends StatelessWidget {
+class StepTitleWidget extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const StepperTitleWidget({
+  const StepTitleWidget({
     Key? key,
     required this.title,
     required this.subtitle
@@ -16,11 +16,11 @@ class StepperTitleWidget extends StatelessWidget {
     return Text.rich(
       TextSpan(
           text: title,
-          style: AppTheme.textStyles.stepperTitle,
+          style: AppTheme.textStyles.stepTitle,
           children: [
             TextSpan(
                 text: '\n$subtitle',
-                style: AppTheme.textStyles.stepperSubtitle
+                style: AppTheme.textStyles.stepSubtitle
             )
           ]
       ),

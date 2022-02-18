@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/modules/create_split/widgets/person_tile.dart';
-import 'package:split_it/modules/create_split/widgets/stepper_input_text.dart';
-import 'package:split_it/modules/create_split/widgets/stepper_title.dart';
+import 'package:split_it/modules/create_split/widgets/step_input_text.dart';
+import 'package:split_it/modules/create_split/widgets/step_title.dart';
 
 class StepTwoPage extends StatefulWidget {
   const StepTwoPage({Key? key}) : super(key: key);
@@ -15,12 +15,12 @@ class _StepTwoPageState extends State<StepTwoPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        StepperTitleWidget(
+        StepTitleWidget(
           title: 'Com quem',
           subtitle: 'você quer dividir?'
         ),
         SizedBox(height: 40,),
-        StepperInputTextWidget(
+        StepInputTextWidget(
           onChanged: (value) {},
           hintText: 'Nome da pessoa',
         ),

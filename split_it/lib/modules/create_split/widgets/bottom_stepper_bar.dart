@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:split_it/modules/create_split/widgets/stepper_next_button.dart';
+import 'package:split_it/modules/create_split/widgets/step_next_button.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class BottomStepperBarWidget extends StatelessWidget {
@@ -22,7 +22,7 @@ class BottomStepperBarWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              StepperNextButtonWidget(
+              StepNextButtonWidget(
                 label: 'Cancelar',
                 onTap: onTapCancel,
                 disabled: disabledButtons,
@@ -32,7 +32,7 @@ class BottomStepperBarWidget extends StatelessWidget {
                 height: 60,
                 color: AppTheme.colors.divider,
               ),
-              StepperNextButtonWidget(
+              StepNextButtonWidget(
                 label: 'Continuar',
                 onTap: onTapNext,
                 disabled: disabledButtons,

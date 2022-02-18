@@ -19,13 +19,13 @@ abstract class AppColors {
   Color get eventTileValue;
   Color get eventTilePeople;
   Color get divider;
-  Color get stepperIndicatorPrimary;
-  Color get stepperIndicatorSecondary;
+  Color get stepIndicatorPrimary;
+  Color get stepIndicatorSecondary;
   Color get backButton;
-  Color get stepperNextButton;
-  Color get stepperNextButtonDisabled;
-  Color get stepperTitle;
-  Color get stepperSubtitle;
+  Color get stepNextButton;
+  Color get stepNextButtonDisabled;
+  Color get stepTitle;
+  Color get stepSubtitle;
   Color get hintTextField;
   Color get textField;
   Color get inputBorder;
@@ -87,25 +87,25 @@ class AppColorsDefault extends AppColors {
   Color get divider => Color(0xFF666666);
 
   @override
-  Color get stepperIndicatorPrimary => Color(0xFF3CAB82);
+  Color get stepIndicatorPrimary => Color(0xFF3CAB82);
 
   @override
-  Color get stepperIndicatorSecondary => Color(0xFF666666);
+  Color get stepIndicatorSecondary => Color(0xFF666666);
 
   @override
   Color get backButton => Color(0xFF666666);
 
   @override
-  Color get stepperNextButton => Color(0xFF455250);
+  Color get stepNextButton => Color(0xFF455250);
 
   @override
-  Color get stepperNextButtonDisabled => Color(0xFF666666);
+  Color get stepNextButtonDisabled => Color(0xFF666666);
 
   @override
-  Color get stepperTitle => Color(0xFF454250);
+  Color get stepTitle => Color(0xFF454250);
 
   @override
-  Color get stepperSubtitle => Color(0xFF454250);
+  Color get stepSubtitle => Color(0xFF454250);
 
   @override
   Color get hintTextField => Color(0xFF666666);

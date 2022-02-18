@@ -30,11 +30,11 @@ class CreateSplitAppBarWidget extends PreferredSize {
             padding: const EdgeInsets.only(right: 24),
             child: Text.rich(TextSpan(
                 text: '${actualPage + 1}'.padLeft(2, '0'),
-                style: AppTheme.textStyles.stepperIndicatorPrimary,
+                style: AppTheme.textStyles.stepIndicatorPrimary,
                 children: [
                   TextSpan(
                     text: ' - ${size.toString().padLeft(2, '0')}',
-                    style: AppTheme.textStyles.stepperIndicatorSecondary,
+                    style: AppTheme.textStyles.stepIndicatorSecondary,
                   )
                 ]
             )),

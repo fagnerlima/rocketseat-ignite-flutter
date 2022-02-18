@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/theme/app_theme.dart';
 
-class StepperInputTextWidget extends StatelessWidget {
+class StepInputTextWidget extends StatelessWidget {
   final Function(String) onChanged;
   final String hintText;
+  final TextAlign textAlign;
 
-  const StepperInputTextWidget({
+  const StepInputTextWidget({
     Key? key,
     required this.onChanged,
-    this.hintText = ''
+    this.hintText = '',
+    this.textAlign = TextAlign.center
   }) : super(key: key);
 
   @override
@@ -17,7 +19,7 @@ class StepperInputTextWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 64),
       child: TextField(
         onChanged: onChanged,
-        textAlign: TextAlign.center,
+        textAlign: textAlign,
         style: AppTheme.textStyles.textField,
         cursorColor: AppTheme.colors.backgroundSecondary,
         decoration: InputDecoration(

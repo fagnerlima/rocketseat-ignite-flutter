@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:split_it/modules/create_split/widgets/stepper_input_text.dart';
-import 'package:split_it/modules/create_split/widgets/stepper_title.dart';
+import 'package:split_it/modules/create_split/widgets/step_input_text.dart';
+import 'package:split_it/modules/create_split/widgets/step_title.dart';
 
 class StepOnePage extends StatefulWidget {
   final void Function(String value) onChanged;
@@ -19,12 +19,12 @@ class _StepOnePageState extends State<StepOnePage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        StepperTitleWidget(
+        StepTitleWidget(
           title: 'Qual o nome',
           subtitle: 'do evento?'
         ),
         SizedBox(height: 40,),
-        StepperInputTextWidget(
+        StepInputTextWidget(
           onChanged: widget.onChanged,
           hintText: 'Ex: Churrasco',
         )

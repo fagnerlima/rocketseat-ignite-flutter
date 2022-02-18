@@ -14,12 +14,12 @@ abstract class AppTextStyles {
   TextStyle get eventTileSubtitle;
   TextStyle get eventTileValue;
   TextStyle get eventTilePeople;
-  TextStyle get stepperIndicatorPrimary;
-  TextStyle get stepperIndicatorSecondary;
-  TextStyle get stepperNextButton;
-  TextStyle get stepperNextButtonDisabled;
-  TextStyle get stepperTitle;
-  TextStyle get stepperSubtitle;
+  TextStyle get stepIndicatorPrimary;
+  TextStyle get stepIndicatorSecondary;
+  TextStyle get stepNextButton;
+  TextStyle get stepNextButtonDisabled;
+  TextStyle get stepTitle;
+  TextStyle get stepSubtitle;
   TextStyle get hintTextField;
   TextStyle get textField;
 }
@@ -96,43 +96,43 @@ class AppTextStylesDefault extends AppTextStyles {
   );
 
   @override
-  TextStyle get stepperIndicatorPrimary => GoogleFonts.roboto(
-    color: AppTheme.colors.stepperIndicatorPrimary,
+  TextStyle get stepIndicatorPrimary => GoogleFonts.roboto(
+    color: AppTheme.colors.stepIndicatorPrimary,
     fontSize: 14,
     fontWeight: FontWeight.w700,
   );
 
   @override
-  TextStyle get stepperIndicatorSecondary => GoogleFonts.roboto(
-    color: AppTheme.colors.stepperIndicatorSecondary,
+  TextStyle get stepIndicatorSecondary => GoogleFonts.roboto(
+    color: AppTheme.colors.stepIndicatorSecondary,
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
 
   @override
-  TextStyle get stepperNextButton => GoogleFonts.inter(
-    color: AppTheme.colors.stepperNextButton,
+  TextStyle get stepNextButton => GoogleFonts.inter(
+    color: AppTheme.colors.stepNextButton,
     fontSize: 12,
     fontWeight: FontWeight.w500,
   );
 
   @override
-  TextStyle get stepperNextButtonDisabled => GoogleFonts.inter(
-    color: AppTheme.colors.stepperNextButtonDisabled,
+  TextStyle get stepNextButtonDisabled => GoogleFonts.inter(
+    color: AppTheme.colors.stepNextButtonDisabled,
     fontSize: 12,
     fontWeight: FontWeight.w500,
   );
 
   @override
-  TextStyle get stepperTitle => GoogleFonts.inter(
-    color: AppTheme.colors.stepperTitle,
+  TextStyle get stepTitle => GoogleFonts.inter(
+    color: AppTheme.colors.stepTitle,
     fontSize: 24,
     fontWeight: FontWeight.w700,
   );
 
   @override
-  TextStyle get stepperSubtitle => GoogleFonts.inter(
-    color: AppTheme.colors.stepperSubtitle,
+  TextStyle get stepSubtitle => GoogleFonts.inter(
+    color: AppTheme.colors.stepSubtitle,
     fontSize: 24,
     fontWeight: FontWeight.w400,
   );
