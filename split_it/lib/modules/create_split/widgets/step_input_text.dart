@@ -5,18 +5,20 @@ class StepInputTextWidget extends StatelessWidget {
   final Function(String) onChanged;
   final String hintText;
   final TextAlign textAlign;
+  final EdgeInsets padding;
 
   const StepInputTextWidget({
     Key? key,
     required this.onChanged,
     this.hintText = '',
-    this.textAlign = TextAlign.center
+    this.textAlign = TextAlign.center,
+    this.padding = const EdgeInsets.symmetric(horizontal: 64)
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 64),
+      padding: padding,
       child: TextField(
         onChanged: onChanged,
         textAlign: textAlign,

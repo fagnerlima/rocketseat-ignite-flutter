@@ -16,13 +16,41 @@ class _StepThreePageState extends State<StepThreePage> {
       children: [
         StepTitleWidget(
             title: 'Qual ou quais',
-            subtitle: 'você quer dividir?'
+            subtitle: 'itens você quer dividir?'
         ),
         SizedBox(height: 40,),
-        StepInputTextWidget(
-          onChanged: (value) {},
-          hintText: 'Nome da pessoa',
-          textAlign: TextAlign.start,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(right: 24),
+                child: Text('1'),
+              ),
+              Expanded(
+                flex: 4,
+                child: StepInputTextWidget(
+                  onChanged: (value) {},
+                  hintText: 'Ex: Picanha',
+                  textAlign: TextAlign.start,
+                  padding: EdgeInsets.zero,
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: StepInputTextWidget(
+                  onChanged: (value) {},
+                  hintText: 'R\$ 0,00',
+                  textAlign: TextAlign.start,
+                  padding: EdgeInsets.zero,
+                ),
+              ),
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.delete)
+              )
+            ],
+          ),
         ),
       ],
     );
