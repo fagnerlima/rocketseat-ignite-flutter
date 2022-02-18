@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/create_split/widgets/person_tile.dart';
 import 'package:split_it/modules/create_split/widgets/stepper_input_text.dart';
 import 'package:split_it/modules/create_split/widgets/stepper_title.dart';
 
@@ -22,7 +23,11 @@ class _StepTwoPageState extends State<StepTwoPage> {
         StepperInputTextWidget(
           onChanged: (value) {},
           hintText: 'Nome da pessoa',
-        )
+        ),
+        SizedBox(height: 35,),
+        PersonTileWidget(name: 'Fagner',),
+        PersonTileWidget(name: 'Fagner',),
+        PersonTileWidget(name: 'Fagner',),
       ],
     );
   }
