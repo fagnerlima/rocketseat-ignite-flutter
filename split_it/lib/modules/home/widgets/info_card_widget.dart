@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/modules/home/widgets/icon_dollar_widget.dart';
 import 'package:split_it/modules/home/widgets/loading_widget.dart';
+import 'package:split_it/shared/util/number_utils.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class InfoCardWidget extends StatelessWidget {
@@ -56,7 +57,7 @@ class InfoCardWidget extends StatelessWidget {
               else
                 ...[
                   Text(
-                    'R\$ $value',
+                    NumberUtils.formatCurrency(value),
                     style: textStyle,
                   ),
                 ]

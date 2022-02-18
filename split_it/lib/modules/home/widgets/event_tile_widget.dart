@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:split_it/modules/home/widgets/icon_dollar_widget.dart';
 import 'package:split_it/modules/home/widgets/loading_widget.dart';
 import 'package:split_it/shared/models/event.dart';
+import 'package:split_it/shared/util/date_utils.dart' as dt;
+import 'package:split_it/shared/util/number_utils.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class EventTileWidget extends StatelessWidget {
@@ -70,15 +72,15 @@ class EventTileWidget extends StatelessWidget {
                     style: AppTheme.textStyles.eventTileTitle,
                   ),
                   subtitle: Text(
-                    data.created.toString(),
+                    dt.DateUtils.formatDate(data.created!),
                     style: AppTheme.textStyles.eventTileSubtitle
                   ),
                   trailing: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'R\$ ${data.value}',
-                          style: AppTheme.textStyles.eventTileValue
+                        NumberUtils.formatCurrency(data.value!),
+                        style: AppTheme.textStyles.eventTileValue
                       ),
                       SizedBox(height: 5,),
                       Text(
