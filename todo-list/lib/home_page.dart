@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ignite_flutter_todo_list/gerencia-de-estado/builder_widget.dart';
 
 import 'controller/home_controller.dart';
 import 'screens/done_screen.dart';
@@ -20,40 +21,35 @@ class _HomePageState extends State<HomePage> {
   var _selectedIndex = 0;
 
   @override
-  void initState() {
-    controller.listen((state) => setState(() {}));
-    super.initState();
-  }
-
-  @override
   void dispose() {
     _pageViewController.dispose();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    print('build HomePage');
     return Scaffold(
-      body: PageView(
-        controller: _pageViewController,
-        children: <Widget>[
-          TaskScreen(
-            itemList: controller.state.toDoItemList,
-            onAddItem: controller.onAddItem,
-            onCompleteItem: controller.onCompleteItem,
-            onRemoveItem: controller.onRemoveToDoItem,
-          ),
-          DoneScreen(
-            itemList: controller.state.doneItemList,
-            onRemoveItem: controller.onRemoveDoneItem,
-            onResetItem: controller.onResetItem,
-          ),
-        ],
-        onPageChanged: (index) {
-          setState(() => _selectedIndex = index);
-        },
+      body: BuilderWidget<HomeState>(
+        controller: controller,
+        builder: (context, state) => PageView(
+          controller: _pageViewController,
+          children: <Widget>[
+            TaskScreen(
+              itemList: controller.state.toDoItemList,
+              onAddItem: controller.onAddItem,
+              onCompleteItem: controller.onCompleteItem,
+              onRemoveItem: controller.onRemoveToDoItem,
+            ),
+            DoneScreen(
+              itemList: controller.state.doneItemList,
+              onRemoveItem: controller.onRemoveDoneItem,
+              onResetItem: controller.onResetItem,
+            )
+          ],
+          onPageChanged: (index) {
+            setState(() => _selectedIndex = index);
+          },
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,

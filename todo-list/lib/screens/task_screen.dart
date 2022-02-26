@@ -27,7 +27,6 @@ class _TaskScreenState extends State<TaskScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('build TaskScreen');
     return Form(
       key: _formKey,
       child: Column(
