@@ -6,4 +6,9 @@ class ToDoItem {
 
   final String title;
   final bool isDone;
+
+  @override
+  String toString() {
+    return 'ToDoItem{title: $title, isDone: $isDone}';
+  }
 }
