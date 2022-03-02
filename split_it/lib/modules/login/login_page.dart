@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 import 'package:split_it/modules/login/login_controller.dart';
 import 'package:split_it/modules/login/login_service.dart';
 import 'package:split_it/modules/login/login_state.dart';
@@ -17,16 +19,13 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     controller = LoginController(
       service: LoginServiceImpl(),
-      onUpdate: () {
-        if (controller.state is LoginStateSuccess) {
-          final user = (controller.state as LoginStateSuccess).user;
-          Navigator.pushReplacementNamed(context, '/home', arguments: user);
-          return;
-        }
-
-        setState(() {});
-      }
     );
+    autorun((_) {
+      if (controller.state is LoginStateSuccess) {
+        final user = (controller.state as LoginStateSuccess).user;
+        Navigator.pushReplacementNamed(context, '/home', arguments: user);
+      }
+    });
     super.initState();
   }
 
@@ -65,19 +64,23 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(height: 32,),
-              if (controller.state is LoginStateLoading)
-                ...[CircularProgressIndicator()]
-              else if (controller.state is LoginStateFailure)
-                ...[Text((controller.state as LoginStateFailure).message)]
-              else
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32),
-                  child: SocialButton(
-                    imagePath: 'assets/images/google.png',
-                    label: 'Entrar com Google',
-                    onTap: controller.googleSignIn,
-                  ),
-                ),
+              Observer(builder: (context) {
+                switch (controller.state.runtimeType) {
+                  case LoginStateLoading:
+                    return CircularProgressIndicator();
+                  case LoginStateFailure:
+                    return Text((controller.state as LoginStateFailure).message);
+                  default:
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 32),
+                      child: SocialButton(
+                        imagePath: 'assets/images/google.png',
+                        label: 'Entrar com Google',
+                        onTap: controller.googleSignIn,
+                      ),
+                    );
+                }
+              }),
               // SizedBox(height: 12,),
               // Padding(
               //   padding: const EdgeInsets.symmetric(horizontal: 32),
