@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:split_it/modules/home/home_controller.dart';
 import 'package:split_it/modules/home/home_state.dart';
 import 'package:split_it/modules/home/widgets/app_bar/app_bar_widget.dart';
@@ -20,7 +21,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     controller.getEvents();
-    controller.listen((state) => setState(() {}));
   }
 
   @override
@@ -37,23 +37,29 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              if (controller.state is HomeStateLoading)
-                ...List.generate(4, (index) => EventTileWidget(
-                  data: Event(),
-                  isLoading: true,
-                ))
-              else if (controller.state is HomeStateSuccess)
-                ...(controller.state as HomeStateSuccess).events
-                  .map((event) => EventTileWidget(data: event))
-                  .toList()
-              else if (controller.state is HomeStateFailure)
-                Text((controller.state as HomeStateFailure).message)
-            ],
-          ),
+          child: Observer(builder: (context) => Column(
+            children: _eventTileList()
+          )),
         ),
       ),
     );
+  }
+
+  List<Widget> _eventTileList() {
+    switch (controller.state.runtimeType) {
+      case HomeStateLoading:
+        return List.generate(4, (index) => EventTileWidget(
+          data: Event(),
+          isLoading: true,
+        ));
+      case HomeStateSuccess:
+        return (controller.state as HomeStateSuccess).events
+            .map((event) => EventTileWidget(data: event))
+            .toList();
+      case HomeStateFailure:
+        return [Text((controller.state as HomeStateFailure).message)];
+      default:
+        return [Container()];
+    }
   }
 }
