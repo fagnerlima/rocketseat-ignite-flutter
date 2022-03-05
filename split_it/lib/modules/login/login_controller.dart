@@ -5,17 +5,17 @@ import 'login_service.dart';
 
 part 'login_controller.g.dart';
 
-class LoginController = _LoginControllerBase with _$LoginController;
+class LoginController = _LoginController with _$LoginController;
 
-class _LoginControllerBase with Store {
+abstract class _LoginController with Store {
   final LoginService service;
 
+  @observable
   LoginState state = LoginStateEmpty();
 
-  _LoginControllerBase({
-    required this.service,
-  });
+  _LoginController({ required this.service });
 
+  @action
   Future<void> googleSignIn() async {
     try {
       state = LoginStateLoading();
