@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:split_it/modules/home/widgets/app_bar/app_bar_controller.dart';
 import 'package:split_it/modules/home/widgets/app_bar/app_bar_state.dart';
 
@@ -18,40 +19,41 @@ class _BottomAppBarWidgetState extends State<BottomAppBarWidget> {
   void initState() {
     super.initState();
     controller.getDashboard();
-    controller.listen((state) => setState(() {}));
   }
 
   @override
   Widget build(BuildContext context) {
-    switch (controller.state.runtimeType) {
-      case AppBarStateLoading:
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            InfoCardWidget(value: 0, isLoading: true,),
-            InfoCardWidget(value: 0, isLoading: true,),
-          ],
-        );
-      case AppBarStateSuccess:
-        {
-          final dashboard = (controller.state as AppBarStateSuccess).dashboard;
-
+    return Observer(builder: (context) {
+      switch (controller.state.runtimeType) {
+        case AppBarStateLoading:
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              InfoCardWidget(value: dashboard.income,),
-              InfoCardWidget(value: -dashboard.expense,),
+              InfoCardWidget(value: 0, isLoading: true,),
+              InfoCardWidget(value: 0, isLoading: true,),
             ],
           );
-        }
-      case AppBarStateFailure:
-        {
-          final message = (controller.state as AppBarStateFailure).message;
+        case AppBarStateSuccess:
+          {
+            final dashboard = (controller.state as AppBarStateSuccess).dashboard;
 
-          return Text(message);
-        }
-      default:
-        return Container();
-    }
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InfoCardWidget(value: dashboard.income,),
+                InfoCardWidget(value: -dashboard.expense,),
+              ],
+            );
+          }
+        case AppBarStateFailure:
+          {
+            final message = (controller.state as AppBarStateFailure).message;
+
+            return Text(message);
+          }
+        default:
+          return Container();
+      }
+    });
   }
 }
