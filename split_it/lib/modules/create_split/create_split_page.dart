@@ -24,11 +24,7 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
   void initState() {
     super.initState();
     pages = [
-      StepOnePage(
-        onChanged: (value) {
-          controller.setEventName(value);
-        },
-      ),
+      StepOnePage(controller: controller),
       StepTwoPage(),
       StepThreePage(),
     ];
