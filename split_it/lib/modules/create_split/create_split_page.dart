@@ -26,7 +26,7 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
     pages = [
       StepOnePage(
         onChanged: (value) {
-          controller.eventName = value;
+          controller.setEventName(value);
         },
       ),
       StepTwoPage(),
@@ -47,7 +47,7 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
       bottomNavigationBar: BottomStepperBarWidget(
         onTapCancel: controller.backPage,
         onTapNext: controller.nextPage,
-        disabledButtons: controller.disabledNavigateButton(),
+        controller: controller,
       ),
     );
   }

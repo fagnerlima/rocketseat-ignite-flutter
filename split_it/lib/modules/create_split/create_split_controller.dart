@@ -11,9 +11,14 @@ abstract class _CreateSplitController with Store {
   @observable
   int currentPage = 0;
 
+  @observable
   String _eventName = '';
 
-  set eventName(value) => _eventName = value;
+  @computed
+  bool get disabledNavigateButton => _eventName.isEmpty;
+
+  @action
+  setEventName(value) => _eventName = value;
 
   @action
   backPage() {
@@ -29,7 +34,4 @@ abstract class _CreateSplitController with Store {
     }
   }
 
-  bool disabledNavigateButton() {
-    return _eventName.isEmpty;
-  }
 }
