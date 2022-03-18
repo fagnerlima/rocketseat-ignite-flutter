@@ -9,47 +9,32 @@ part of 'step_two_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$StepTwoController on StepTwoControllerBase, Store {
-  Computed<Future<List<FriendModel>?>>? _$friendsComputed;
+  final _$friendsAtom = Atom(name: 'StepTwoControllerBase.friends');
 
   @override
-  Future<List<FriendModel>?> get friends => (_$friendsComputed ??=
-          Computed<Future<List<FriendModel>?>>(() => super.friends,
-              name: 'StepTwoControllerBase.friends'))
-      .value;
-
-  final _$searchAtom = Atom(name: 'StepTwoControllerBase.search');
-
-  @override
-  String get search {
-    _$searchAtom.reportRead();
-    return super.search;
+  List<FriendModel> get friends {
+    _$friendsAtom.reportRead();
+    return super.friends;
   }
 
   @override
-  set search(String value) {
-    _$searchAtom.reportWrite(value, super.search, () {
-      super.search = value;
+  set friends(List<FriendModel> value) {
+    _$friendsAtom.reportWrite(value, super.friends, () {
+      super.friends = value;
     });
   }
 
-  final _$StepTwoControllerBaseActionController =
-      ActionController(name: 'StepTwoControllerBase');
+  final _$getFriendsAsyncAction =
+      AsyncAction('StepTwoControllerBase.getFriends');
 
   @override
-  dynamic change(String value) {
-    final _$actionInfo = _$StepTwoControllerBaseActionController.startAction(
-        name: 'StepTwoControllerBase.change');
-    try {
-      return super.change(value);
-    } finally {
-      _$StepTwoControllerBaseActionController.endAction(_$actionInfo);
-    }
+  Future<void> getFriends(String search) {
+    return _$getFriendsAsyncAction.run(() => super.getFriends(search));
   }
 
   @override
   String toString() {
     return '''
-search: ${search},
 friends: ${friends}
     ''';
   }

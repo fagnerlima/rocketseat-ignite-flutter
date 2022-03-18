@@ -7,6 +7,6 @@ class FriendsRepository extends FirebaseRepository<FriendModel> {
 
   @override
   FriendModel fromMap(Map<String, dynamic> map) {
-    throw UnimplementedError();
+    return FriendModel.fromMap(map);
   }
 }

@@ -18,7 +18,7 @@ abstract class FirebaseRepository<T extends BaseModel> {
     }
   }
 
-  Future<List<T>?> where({
+  Future<List<T>> where({
     required String key,
     required String value
   }) async {
@@ -32,7 +32,7 @@ abstract class FirebaseRepository<T extends BaseModel> {
           .map((e) => fromMap(e.data()))
           .toList();
     } catch (e) {
-      return null;
+      return [];
     }
   }
 

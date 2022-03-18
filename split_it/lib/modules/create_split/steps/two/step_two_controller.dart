@@ -10,19 +10,14 @@ abstract class StepTwoControllerBase with Store {
   final repository = FriendsRepository();
 
   @observable
-  String search = '';
+  List<FriendModel> friends = [];
 
   @action
-  change(String value) {
-    search = value;
-  }
-
-  @computed
-  Future<List<FriendModel>?> get friends async {
+  Future<void> getFriends(String search) async {
     if (search.isEmpty) {
-      return [];
+      friends = [];
     }
 
-    return await repository.where(key: 'name', value: search);
+    friends = await repository.where(key: 'name', value: search);
   }
 }

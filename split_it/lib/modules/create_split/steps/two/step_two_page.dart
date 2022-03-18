@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:split_it/modules/create_split/steps/two/step_two_controller.dart';
 import 'package:split_it/modules/create_split/widgets/person_tile.dart';
 import 'package:split_it/modules/create_split/widgets/step_input_text.dart';
 import 'package:split_it/modules/create_split/widgets/step_title.dart';
@@ -11,6 +13,8 @@ class StepTwoPage extends StatefulWidget {
 }
 
 class _StepTwoPageState extends State<StepTwoPage> {
+  final controller = StepTwoController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,13 +25,21 @@ class _StepTwoPageState extends State<StepTwoPage> {
         ),
         SizedBox(height: 40,),
         StepInputTextWidget(
-          onChanged: (value) {},
+          onChanged: (value) => controller.getFriends(value),
           hintText: 'Nome da pessoa',
         ),
         SizedBox(height: 35,),
-        PersonTileWidget(name: 'Fagner',),
-        PersonTileWidget(name: 'Fagner',),
-        PersonTileWidget(name: 'Fagner',),
+        Observer(builder: (context) {
+          if (controller.friends.isEmpty) {
+            return Text('Nenhum amigo encontrado');
+          }
+
+          return Column(
+            children: controller.friends
+                .map((f) => PersonTileWidget(name: f.name))
+                .toList(),
+          );
+        },),
       ],
     );
   }
