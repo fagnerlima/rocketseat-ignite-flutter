@@ -4,9 +4,9 @@ import 'package:split_it/shared/repositories/friends_repository.dart';
 
 part 'step_two_controller.g.dart';
 
-class StepSwoController = StepSwoControllerBase with _$StepSwoController;
+class StepTwoController = StepTwoControllerBase with _$StepTwoController;
 
-abstract class StepSwoControllerBase with Store {
+abstract class StepTwoControllerBase with Store {
   final repository = FriendsRepository();
 
   @observable

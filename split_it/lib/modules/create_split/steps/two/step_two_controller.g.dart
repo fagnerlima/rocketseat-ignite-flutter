@@ -8,16 +8,16 @@ part of 'step_two_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$StepSwoController on StepSwoControllerBase, Store {
+mixin _$StepTwoController on StepTwoControllerBase, Store {
   Computed<Future<List<FriendModel>?>>? _$friendsComputed;
 
   @override
   Future<List<FriendModel>?> get friends => (_$friendsComputed ??=
           Computed<Future<List<FriendModel>?>>(() => super.friends,
-              name: 'StepSwoControllerBase.friends'))
+              name: 'StepTwoControllerBase.friends'))
       .value;
 
-  final _$searchAtom = Atom(name: 'StepSwoControllerBase.search');
+  final _$searchAtom = Atom(name: 'StepTwoControllerBase.search');
 
   @override
   String get search {
@@ -32,17 +32,17 @@ mixin _$StepSwoController on StepSwoControllerBase, Store {
     });
   }
 
-  final _$StepSwoControllerBaseActionController =
-      ActionController(name: 'StepSwoControllerBase');
+  final _$StepTwoControllerBaseActionController =
+      ActionController(name: 'StepTwoControllerBase');
 
   @override
   dynamic change(String value) {
-    final _$actionInfo = _$StepSwoControllerBaseActionController.startAction(
-        name: 'StepSwoControllerBase.change');
+    final _$actionInfo = _$StepTwoControllerBaseActionController.startAction(
+        name: 'StepTwoControllerBase.change');
     try {
       return super.change(value);
     } finally {
-      _$StepSwoControllerBaseActionController.endAction(_$actionInfo);
+      _$StepTwoControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
