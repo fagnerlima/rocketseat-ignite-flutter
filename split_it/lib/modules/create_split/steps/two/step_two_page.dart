@@ -16,6 +16,12 @@ class _StepTwoPageState extends State<StepTwoPage> {
   final controller = StepTwoController();
 
   @override
+  void initState() {
+    controller.getFriends();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -25,7 +31,7 @@ class _StepTwoPageState extends State<StepTwoPage> {
         ),
         SizedBox(height: 40,),
         StepInputTextWidget(
-          onChanged: (value) => controller.getFriends(value),
+          onChanged: (value) => controller.findFriends(value),
           hintText: 'Nome da pessoa',
         ),
         SizedBox(height: 35,),

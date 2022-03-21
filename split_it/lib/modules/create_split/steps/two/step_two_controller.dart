@@ -10,14 +10,31 @@ abstract class StepTwoControllerBase with Store {
   final repository = FriendsRepository();
 
   @observable
-  List<FriendModel> friends = [];
+  List<FriendModel> _friends = [];
 
-  @action
-  Future<void> getFriends(String search) async {
-    if (search.isEmpty) {
-      friends = [];
+  @observable
+  String _nameFilter = '';
+
+  @computed
+  List<FriendModel> get friends {
+    if (_nameFilter.isEmpty) {
+      return _friends;
     }
 
-    friends = await repository.where(key: 'name', value: search);
+    return _friends
+        .where((element) => element.name
+            .toLowerCase()
+            .contains(_nameFilter.toLowerCase()))
+        .toList();
+  }
+
+  @action
+  Future<void> getFriends() async {
+    _friends = await repository.get();
+  }
+
+  @action
+  void findFriends(String name) {
+    _nameFilter = name;
   }
 }

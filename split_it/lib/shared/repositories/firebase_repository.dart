@@ -22,23 +22,27 @@ abstract class FirebaseRepository<T extends BaseModel> {
     required String key,
     required String value
   }) async {
-    try {
-      final response = await firestore
-          .collection(collection)
-          .where(key, isEqualTo: value)
-          .get();
+    final response = await firestore
+        .collection(collection)
+        .where(key, isEqualTo: value)
+        .get();
 
-      return response.docs
-          .map((e) => fromMap(e.data()))
-          .toList();
-    } catch (e) {
-      return [];
-    }
+    return response.docs
+        .map((e) => fromMap(e.data()))
+        .toList();
   }
 
   update() {}
 
-  get() {}
+  Future<List<T>> get() async {
+    final response = await firestore
+        .collection(collection)
+        .get();
+
+    return response.docs
+        .map((e) => fromMap(e.data()))
+        .toList();
+  }
 
   delete() {}
 
