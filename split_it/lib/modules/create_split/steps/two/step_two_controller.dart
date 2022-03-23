@@ -13,6 +13,9 @@ abstract class StepTwoControllerBase with Store {
   List<FriendModel> _friends = [];
 
   @observable
+  List<FriendModel> _selectedFriends = [];
+
+  @observable
   String _nameFilter = '';
 
   @computed
@@ -28,6 +31,8 @@ abstract class StepTwoControllerBase with Store {
         .toList();
   }
 
+  List<FriendModel> get selectedFriends => _selectedFriends;
+
   @action
   Future<void> getFriends() async {
     _friends = await repository.get();
@@ -36,5 +41,15 @@ abstract class StepTwoControllerBase with Store {
   @action
   void findFriends(String name) {
     _nameFilter = name;
+  }
+
+  @action
+  void addFriend(FriendModel friend) {
+    _selectedFriends.add(friend);
+  }
+
+  @action
+  void removeFriend(FriendModel friend) {
+    _selectedFriends.remove(friend);
   }
 }

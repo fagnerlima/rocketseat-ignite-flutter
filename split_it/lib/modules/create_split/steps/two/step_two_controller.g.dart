@@ -32,6 +32,22 @@ mixin _$StepTwoController on StepTwoControllerBase, Store {
     });
   }
 
+  final _$_selectedFriendsAtom =
+      Atom(name: 'StepTwoControllerBase._selectedFriends');
+
+  @override
+  List<FriendModel> get _selectedFriends {
+    _$_selectedFriendsAtom.reportRead();
+    return super._selectedFriends;
+  }
+
+  @override
+  set _selectedFriends(List<FriendModel> value) {
+    _$_selectedFriendsAtom.reportWrite(value, super._selectedFriends, () {
+      super._selectedFriends = value;
+    });
+  }
+
   final _$_nameFilterAtom = Atom(name: 'StepTwoControllerBase._nameFilter');
 
   @override
@@ -64,6 +80,28 @@ mixin _$StepTwoController on StepTwoControllerBase, Store {
         name: 'StepTwoControllerBase.findFriends');
     try {
       return super.findFriends(name);
+    } finally {
+      _$StepTwoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addFriend(FriendModel friend) {
+    final _$actionInfo = _$StepTwoControllerBaseActionController.startAction(
+        name: 'StepTwoControllerBase.addFriend');
+    try {
+      return super.addFriend(friend);
+    } finally {
+      _$StepTwoControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeFriend(FriendModel friend) {
+    final _$actionInfo = _$StepTwoControllerBaseActionController.startAction(
+        name: 'StepTwoControllerBase.removeFriend');
+    try {
+      return super.removeFriend(friend);
     } finally {
       _$StepTwoControllerBaseActionController.endAction(_$actionInfo);
     }

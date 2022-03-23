@@ -36,6 +36,20 @@ class _StepTwoPageState extends State<StepTwoPage> {
         ),
         SizedBox(height: 35,),
         Observer(builder: (context) {
+          if (controller.selectedFriends.isEmpty) {
+            return Container();
+          }
+
+          return Column(
+            children: [
+              ...controller.selectedFriends
+                .map((f) => PersonTileWidget(name: f.name))
+                .toList(),
+              SizedBox(height: 16,),
+            ],
+          );
+        },),
+        Observer(builder: (context) {
           if (controller.friends.isEmpty) {
             return Text('Nenhum amigo encontrado');
           }
