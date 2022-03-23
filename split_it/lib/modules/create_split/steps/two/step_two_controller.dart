@@ -10,10 +10,10 @@ abstract class StepTwoControllerBase with Store {
   final repository = FriendsRepository();
 
   @observable
-  List<FriendModel> _friends = [];
+  ObservableList<FriendModel> _friends = ObservableList.of([]);
 
   @observable
-  List<FriendModel> _selectedFriends = [];
+  ObservableList<FriendModel> _selectedFriends = ObservableList.of([]);
 
   @observable
   String _nameFilter = '';
@@ -35,7 +35,7 @@ abstract class StepTwoControllerBase with Store {
 
   @action
   Future<void> getFriends() async {
-    _friends = await repository.get();
+    _friends = ObservableList.of(await repository.get());
   }
 
   @action

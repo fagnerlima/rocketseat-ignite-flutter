@@ -20,13 +20,13 @@ mixin _$StepTwoController on StepTwoControllerBase, Store {
   final _$_friendsAtom = Atom(name: 'StepTwoControllerBase._friends');
 
   @override
-  List<FriendModel> get _friends {
+  ObservableList<FriendModel> get _friends {
     _$_friendsAtom.reportRead();
     return super._friends;
   }
 
   @override
-  set _friends(List<FriendModel> value) {
+  set _friends(ObservableList<FriendModel> value) {
     _$_friendsAtom.reportWrite(value, super._friends, () {
       super._friends = value;
     });
@@ -36,13 +36,13 @@ mixin _$StepTwoController on StepTwoControllerBase, Store {
       Atom(name: 'StepTwoControllerBase._selectedFriends');
 
   @override
-  List<FriendModel> get _selectedFriends {
+  ObservableList<FriendModel> get _selectedFriends {
     _$_selectedFriendsAtom.reportRead();
     return super._selectedFriends;
   }
 
   @override
-  set _selectedFriends(List<FriendModel> value) {
+  set _selectedFriends(ObservableList<FriendModel> value) {
     _$_selectedFriendsAtom.reportWrite(value, super._selectedFriends, () {
       super._selectedFriends = value;
     });
