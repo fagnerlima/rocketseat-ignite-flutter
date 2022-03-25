@@ -18,4 +18,14 @@ class FriendModel extends BaseModel {
       name: map['name'] as String,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FriendModel &&
+          runtimeType == other.runtimeType &&
+          name == other.name;
+
+  @override
+  int get hashCode => name.hashCode;
 }

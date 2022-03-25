@@ -20,15 +20,23 @@ abstract class StepTwoControllerBase with Store {
 
   @computed
   List<FriendModel> get friends {
-    if (_nameFilter.isEmpty) {
-      return _friends;
+    List<FriendModel> friends = [];
+
+    if (_selectedFriends.isEmpty) {
+      friends.addAll(_friends);
+    } else {
+      friends.addAll(_friends
+          .where((f) => !checkIsSelected(f))
+          .toList());
     }
 
-    return _friends
-        .where((element) => element.name
-            .toLowerCase()
-            .contains(_nameFilter.toLowerCase()))
-        .toList();
+    if (_nameFilter.isNotEmpty) {
+      return friends
+          .where((f) => checkNameFilter(f))
+          .toList();
+    }
+
+    return friends;
   }
 
   List<FriendModel> get selectedFriends => _selectedFriends;
@@ -51,5 +59,15 @@ abstract class StepTwoControllerBase with Store {
   @action
   void removeFriend(FriendModel friend) {
     _selectedFriends.remove(friend);
+  }
+
+  bool checkNameFilter(FriendModel friend) {
+    return friend.name
+        .toLowerCase()
+        .contains(_nameFilter.toLowerCase());
+  }
+
+  bool checkIsSelected(FriendModel friend) {
+    return _selectedFriends.contains(friend);
   }
 }
