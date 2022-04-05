@@ -22,6 +22,8 @@ abstract class AppTextStyles {
   TextStyle get stepSubtitle;
   TextStyle get hintTextField;
   TextStyle get textField;
+  TextStyle get personTileTitle;
+  TextStyle get personTileTitleSelected;
 }
 
 class AppTextStylesDefault extends AppTextStyles {
@@ -149,5 +151,19 @@ class AppTextStylesDefault extends AppTextStyles {
     color: AppTheme.colors.textField,
     fontSize: 16,
     fontWeight: FontWeight.w500,
+  );
+
+  @override
+  TextStyle get personTileTitle => GoogleFonts.inter(
+    color: AppTheme.colors.personTileTitle,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+
+  @override
+  TextStyle get personTileTitleSelected => GoogleFonts.inter(
+    color: AppTheme.colors.personTileTitleSelected,
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
   );
 }

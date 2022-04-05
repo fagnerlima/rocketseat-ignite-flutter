@@ -29,6 +29,10 @@ abstract class AppColors {
   Color get hintTextField;
   Color get textField;
   Color get inputBorder;
+  Color get iconAdd;
+  Color get iconRemove;
+  Color get personTileTitle;
+  Color get personTileTitleSelected;
 }
 
 class AppColorsDefault extends AppColors {
@@ -115,4 +119,16 @@ class AppColorsDefault extends AppColors {
 
   @override
   Color get inputBorder => Color(0xFF455250);
+
+  @override
+  Color get iconAdd => Color(0xFF40B28C);
+
+  @override
+  Color get iconRemove => Color(0xFFE83F5B);
+
+  @override
+  Color get personTileTitle => button;
+
+  @override
+  Color get personTileTitleSelected => Color(0xFF455250);
 }

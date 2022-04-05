@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/shared/models/friend_model.dart';
+import 'package:split_it/theme/app_theme.dart';
 
 class PersonTileWidget extends StatelessWidget {
-  final String name;
+  final FriendModel data;
   final bool isRemoved;
   final VoidCallback onPressed;
 
   const PersonTileWidget({
     Key? key,
-    required this.name,
+    required this.data,
     this.isRemoved = false,
     required this.onPressed
   }) : super(key: key);
@@ -16,13 +18,27 @@ class PersonTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Container(
-        color: Colors.grey[200],
         width: 40,
         height: 40,
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(10),
+          image: DecorationImage(
+              image: NetworkImage(data.photoURL),
+              fit: BoxFit.cover
+          ),
+        ),
       ),
-      title: Text(name),
+      title: Text(
+          data.name,
+          style: isRemoved
+              ? AppTheme.textStyles.personTileTitleSelected
+              : AppTheme.textStyles.personTileTitle,
+      ),
       trailing: IconButton(
-        icon: Icon(isRemoved ? Icons.remove : Icons.add),
+        icon: isRemoved
+          ? Icon(Icons.remove, color: AppTheme.colors.iconRemove,)
+          : Icon(Icons.add, color: AppTheme.colors.iconAdd,),
         onPressed: onPressed,
       ),
     );

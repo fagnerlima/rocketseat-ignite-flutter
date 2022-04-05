@@ -44,7 +44,7 @@ class _StepTwoPageState extends State<StepTwoPage> {
             children: [
               ...controller.selectedFriends
                 .map((f) => PersonTileWidget(
-                  name: f.name,
+                  data: f,
                   isRemoved: true,
                   onPressed: () => controller.removeFriend(f),
                 ))
@@ -61,7 +61,7 @@ class _StepTwoPageState extends State<StepTwoPage> {
           return Column(
             children: controller.friends
                 .map((f) => PersonTileWidget(
-                  name: f.name,
+                  data: f,
                   onPressed: () => controller.addFriend(f),
                 ))
                 .toList(),

@@ -43,9 +43,11 @@ class FriendModel extends BaseModel {
   }
 
   factory FriendModel.fromMap(Map<String, dynamic> map) {
+    const defaultPhotoURL = 'https://www.kindpng.com/picc/m/173-1731325_person-icon-png-transparent-png.png';
+
     return FriendModel(
       name: map['name'] as String,
-      photoURL: (map['photoURL'] ?? '') as String,
+      photoURL: (map['photoURL'] ?? defaultPhotoURL) as String,
     );
   }
 }
