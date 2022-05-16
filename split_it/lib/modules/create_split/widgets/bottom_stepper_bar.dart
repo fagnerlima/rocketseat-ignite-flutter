@@ -27,7 +27,7 @@ class BottomStepperBarWidget extends StatelessWidget {
               Observer(builder: (_) => StepNextButtonWidget(
                 label: 'Cancelar',
                 onTap: onTapCancel,
-                disabled: controller.disabledNavigateButton,
+                disabled: !controller.enabledNavigateButton,
               )),
               Container(
                 width: 1,
@@ -37,7 +37,7 @@ class BottomStepperBarWidget extends StatelessWidget {
               Observer(builder: (_) => StepNextButtonWidget(
                 label: 'Continuar',
                 onTap: onTapNext,
-                disabled: controller.disabledNavigateButton,
+                disabled: !controller.enabledNavigateButton,
               )),
             ],
           ),

@@ -9,12 +9,12 @@ part of 'create_split_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CreateSplitController on _CreateSplitController, Store {
-  Computed<bool>? _$disabledNavigateButtonComputed;
+  Computed<bool>? _$enabledNavigateButtonComputed;
 
   @override
-  bool get disabledNavigateButton => (_$disabledNavigateButtonComputed ??=
-          Computed<bool>(() => super.disabledNavigateButton,
-              name: '_CreateSplitController.disabledNavigateButton'))
+  bool get enabledNavigateButton => (_$enabledNavigateButtonComputed ??=
+          Computed<bool>(() => super.enabledNavigateButton,
+              name: '_CreateSplitController.enabledNavigateButton'))
       .value;
 
   final _$currentPageAtom = Atom(name: '_CreateSplitController.currentPage');
@@ -44,6 +44,22 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
   set _eventName(String value) {
     _$_eventNameAtom.reportWrite(value, super._eventName, () {
       super._eventName = value;
+    });
+  }
+
+  final _$_selectedFriendsAtom =
+      Atom(name: '_CreateSplitController._selectedFriends');
+
+  @override
+  List<FriendModel> get _selectedFriends {
+    _$_selectedFriendsAtom.reportRead();
+    return super._selectedFriends;
+  }
+
+  @override
+  set _selectedFriends(List<FriendModel> value) {
+    _$_selectedFriendsAtom.reportWrite(value, super._selectedFriends, () {
+      super._selectedFriends = value;
     });
   }
 
@@ -84,10 +100,21 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
   }
 
   @override
+  void setSelectedFriends(List<FriendModel> value) {
+    final _$actionInfo = _$_CreateSplitControllerActionController.startAction(
+        name: '_CreateSplitController.setSelectedFriends');
+    try {
+      return super.setSelectedFriends(value);
+    } finally {
+      _$_CreateSplitControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 currentPage: ${currentPage},
-disabledNavigateButton: ${disabledNavigateButton}
+enabledNavigateButton: ${enabledNavigateButton}
     ''';
   }
 }

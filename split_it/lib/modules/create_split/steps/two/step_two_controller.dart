@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:split_it/modules/create_split/create_split_controller.dart';
 import 'package:split_it/shared/models/friend_model.dart';
 import 'package:split_it/shared/repositories/friends_repository.dart';
 
@@ -7,6 +8,7 @@ part 'step_two_controller.g.dart';
 class StepTwoController = StepTwoControllerBase with _$StepTwoController;
 
 abstract class StepTwoControllerBase with Store {
+  final CreateSplitController controller;
   final repository = FriendsRepository();
 
   @observable
@@ -17,6 +19,10 @@ abstract class StepTwoControllerBase with Store {
 
   @observable
   String _nameFilter = '';
+
+  StepTwoControllerBase({ required this.controller }) {
+    autorun((_) => controller.setSelectedFriends(_selectedFriends));
+  }
 
   @computed
   List<FriendModel> get friends {
