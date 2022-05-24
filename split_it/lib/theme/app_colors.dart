@@ -23,6 +23,7 @@ abstract class AppColors {
   Color get stepIndicatorSecondary;
   Color get backButton;
   Color get stepNextButton;
+  Color get stepNextButtonRegular;
   Color get stepNextButtonDisabled;
   Color get stepTitle;
   Color get stepSubtitle;
@@ -101,6 +102,9 @@ class AppColorsDefault extends AppColors {
 
   @override
   Color get stepNextButton => Color(0xFF455250);
+
+  @override
+  Color get stepNextButtonRegular => Color(0xFF40B28C);
 
   @override
   Color get stepNextButtonDisabled => Color(0xFF666666);

@@ -17,6 +17,7 @@ abstract class AppTextStyles {
   TextStyle get stepIndicatorPrimary;
   TextStyle get stepIndicatorSecondary;
   TextStyle get stepNextButton;
+  TextStyle get stepNextButtonRegular;
   TextStyle get stepNextButtonDisabled;
   TextStyle get stepTitle;
   TextStyle get stepSubtitle;
@@ -114,6 +115,13 @@ class AppTextStylesDefault extends AppTextStyles {
   @override
   TextStyle get stepNextButton => GoogleFonts.inter(
     color: AppTheme.colors.stepNextButton,
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+  );
+
+  @override
+  TextStyle get stepNextButtonRegular => GoogleFonts.inter(
+    color: AppTheme.colors.stepNextButtonRegular,
     fontSize: 12,
     fontWeight: FontWeight.w500,
   );
