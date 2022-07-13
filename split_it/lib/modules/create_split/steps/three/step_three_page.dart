@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:split_it/modules/create_split/steps/three/step_three_controller.dart';
 import 'package:split_it/modules/create_split/widgets/add_text_button.dart';
 import 'package:split_it/modules/create_split/widgets/step_multi_input_text.dart';
 import 'package:split_it/modules/create_split/widgets/step_title.dart';
@@ -11,6 +13,8 @@ class StepThreePage extends StatefulWidget {
 }
 
 class _StepThreePageState extends State<StepThreePage> {
+  final controller = StepThreeController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,16 +23,26 @@ class _StepThreePageState extends State<StepThreePage> {
             title: 'Qual ou quais',
             subtitle: 'itens você quer dividir?'
         ),
-        SizedBox(height: 40,),
-        StepMultiInputText(
-          count: 1,
-          itemName: (value) {},
-          itemValue: (value) {},
-        ),
+        Observer(builder: (_) => StepMultiInputText(
+          count: controller.currentIndex + 1,
+          itemName: (value) => controller.onChanged(name: value),
+          itemValue: (value) => controller.onChanged(value: value),
+        )),
+        Observer(builder: (_) => Column(
+          children: controller.items
+              .map((element) => StepMultiInputText(
+                count: controller.currentIndex,
+                itemName: (value) {},
+                itemValue: (value) {},
+              )).toList(),
+        )),
         SizedBox(height: 24,),
-        AddTextButton(
-          label: 'Continuar',
-          onPressed: () {}
+        Observer(builder: (_) => controller.showButton
+          ? AddTextButton(
+              label: 'Continuar',
+              onPressed: () => controller.addItem()
+            )
+          : Container()
         )
       ],
     );

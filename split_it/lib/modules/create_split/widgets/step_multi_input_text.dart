@@ -43,7 +43,10 @@ class StepMultiInputText extends StatelessWidget {
             child: StepInputTextWidget(
               controller: valueInputTextController,
               textInputType: TextInputType.number,
-              onChanged: (value) => itemValue(0),
+              onChanged: (value) => itemValue(double.parse(value
+                  .replaceAll('R\$', '')
+                  .replaceAll('.', '')
+                  .replaceAll(',', '.'))), // TODO fix
               hintText: 'R\$ 0,00',
               textAlign: TextAlign.start,
               padding: EdgeInsets.zero,
