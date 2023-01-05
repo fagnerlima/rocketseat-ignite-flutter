@@ -63,6 +63,21 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
     });
   }
 
+  final _$_itemsAtom = Atom(name: '_CreateSplitController._items');
+
+  @override
+  List<ItemModel> get _items {
+    _$_itemsAtom.reportRead();
+    return super._items;
+  }
+
+  @override
+  set _items(List<ItemModel> value) {
+    _$_itemsAtom.reportWrite(value, super._items, () {
+      super._items = value;
+    });
+  }
+
   final _$_CreateSplitControllerActionController =
       ActionController(name: '_CreateSplitController');
 
@@ -105,6 +120,17 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
         name: '_CreateSplitController.setSelectedFriends');
     try {
       return super.setSelectedFriends(value);
+    } finally {
+      _$_CreateSplitControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setItems(List<ItemModel> value) {
+    final _$actionInfo = _$_CreateSplitControllerActionController.startAction(
+        name: '_CreateSplitController.setItems');
+    try {
+      return super.setItems(value);
     } finally {
       _$_CreateSplitControllerActionController.endAction(_$actionInfo);
     }
