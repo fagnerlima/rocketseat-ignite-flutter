@@ -37,6 +37,7 @@ class _StepThreePageState extends State<StepThreePage> {
               )
             : Container()
           ),
+          SizedBox(height: 24,),
           Observer(builder: (_) => Column(
             children: [
               for (var i = 0; i < controller.items.length; i++) (
@@ -46,8 +47,8 @@ class _StepThreePageState extends State<StepThreePage> {
                     count: i + 1,
                     initialName: controller.items[i].name,
                     initialValue: controller.items[i].value,
-                    itemName: (value) {},
-                    itemValue: (value) {},
+                    itemName: (value) => controller.editItem(i, name: value),
+                    itemValue: (value) => controller.editItem(i, value: value),
                     onDelete: () => controller.removeItem(i),
                   )
               )
