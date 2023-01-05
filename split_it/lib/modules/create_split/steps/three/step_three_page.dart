@@ -24,6 +24,7 @@ class _StepThreePageState extends State<StepThreePage> {
             subtitle: 'itens você quer dividir?'
         ),
         Observer(builder: (_) => StepMultiInputText(
+          key: UniqueKey(),
           count: controller.currentIndex + 1,
           itemName: (value) => controller.onChanged(name: value),
           itemValue: (value) => controller.onChanged(value: value),
