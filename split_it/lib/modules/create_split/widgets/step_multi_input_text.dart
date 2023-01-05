@@ -8,7 +8,8 @@ class StepMultiInputText extends StatefulWidget {
   final double? initialValue;
   final ValueChanged<String> itemName;
   final ValueChanged<double> itemValue;
-
+  final bool isRemoved;
+  final VoidCallback? onDelete;
 
   StepMultiInputText({
     Key? key,
@@ -16,7 +17,9 @@ class StepMultiInputText extends StatefulWidget {
     required this.itemName,
     required this.itemValue,
     this.initialName,
-    this.initialValue
+    this.initialValue,
+    this.isRemoved = false,
+    this.onDelete
   }) : super(key: key);
 
   @override
@@ -70,9 +73,11 @@ class _StepMultiInputTextState extends State<StepMultiInputText> {
               padding: EdgeInsets.zero,
             ),
           ),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.delete)
+          if (widget.isRemoved) (
+            IconButton(
+                onPressed: () => widget.onDelete!(),
+                icon: Icon(Icons.delete)
+            )
           )
         ],
       ),
