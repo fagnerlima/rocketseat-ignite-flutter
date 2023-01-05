@@ -29,12 +29,16 @@ class _StepThreePageState extends State<StepThreePage> {
           itemValue: (value) => controller.onChanged(value: value),
         )),
         Observer(builder: (_) => Column(
-          children: controller.items
-              .map((element) => StepMultiInputText(
-                count: controller.currentIndex,
+          children: [
+            for (var i = 0; i < controller.items.length; i++)
+              StepMultiInputText(
+                count: i + 1,
+                initialName: controller.items[i].name,
+                initialValue: controller.items[i].value,
                 itemName: (value) {},
                 itemValue: (value) {},
-              )).toList(),
+              )
+          ],
         )),
         SizedBox(height: 24,),
         Observer(builder: (_) => controller.showButton

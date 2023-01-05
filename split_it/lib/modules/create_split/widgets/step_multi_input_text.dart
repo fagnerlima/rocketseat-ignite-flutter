@@ -2,22 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:split_it/modules/create_split/widgets/step_input_text.dart';
 
-class StepMultiInputText extends StatelessWidget {
+class StepMultiInputText extends StatefulWidget {
   final int count;
+  final String? initialName;
+  final double? initialValue;
   final ValueChanged<String> itemName;
   final ValueChanged<double> itemValue;
 
-  final valueInputTextController = MoneyMaskedTextController(
-    leftSymbol: 'R\$',
-    decimalSeparator: ','
-  );
 
   StepMultiInputText({
     Key? key,
     required this.count,
     required this.itemName,
-    required this.itemValue
+    required this.itemValue,
+    this.initialName,
+    this.initialValue
   }) : super(key: key);
+
+  @override
+  State<StepMultiInputText> createState() => _StepMultiInputTextState();
+}
+
+class _StepMultiInputTextState extends State<StepMultiInputText> {
+  late MoneyMaskedTextController valueInputTextController;
+  
+  @override
+  void initState() {
+    super.initState();
+    valueInputTextController = MoneyMaskedTextController(
+        initialValue: widget.initialValue ?? 0.0,
+        leftSymbol: 'R\$',
+        decimalSeparator: ','
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +44,13 @@ class StepMultiInputText extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(right: 24),
-            child: Text('$count'),
+            child: Text('${widget.count}'),
           ),
           Expanded(
             flex: 4,
             child: StepInputTextWidget(
-              onChanged: (value) => itemName(value),
+              initialValue: widget.initialName,
+              onChanged: (value) => widget.itemName(value),
               hintText: 'Ex: Picanha',
               textAlign: TextAlign.start,
               padding: EdgeInsets.zero,
@@ -43,7 +61,7 @@ class StepMultiInputText extends StatelessWidget {
             child: StepInputTextWidget(
               controller: valueInputTextController,
               textInputType: TextInputType.number,
-              onChanged: (value) => itemValue(double.parse(value
+              onChanged: (value) => widget.itemValue(double.parse(value
                   .replaceAll('R\$', '')
                   .replaceAll('.', '')
                   .replaceAll(',', '.'))), // TODO fix

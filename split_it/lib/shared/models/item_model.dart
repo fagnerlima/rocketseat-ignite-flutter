@@ -1,13 +1,13 @@
 class ItemModel {
-  final String? name;
-  final double? value;
+  final String name;
+  final double value;
 
   const ItemModel({
     this.name = '',
     this.value = 0,
   });
 
-  bool get isValid => name!.trim().isNotEmpty && value! > 0;
+  bool get isValid => name.trim().isNotEmpty && value > 0;
 
   @override
   bool operator ==(Object other) =>
