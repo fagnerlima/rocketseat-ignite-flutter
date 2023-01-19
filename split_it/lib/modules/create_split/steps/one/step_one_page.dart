@@ -26,7 +26,7 @@ class _StepOnePageState extends State<StepOnePage> {
         ),
         SizedBox(height: 40,),
         StepInputTextWidget(
-          onChanged: widget.controller.setEventName,
+          onChanged: (value) => widget.controller.onChanged(name: value),
           hintText: 'Ex: Churrasco',
         )
       ],

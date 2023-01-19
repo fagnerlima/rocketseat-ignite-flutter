@@ -32,49 +32,18 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
     });
   }
 
-  final _$_eventNameAtom = Atom(name: '_CreateSplitController._eventName');
+  final _$_eventAtom = Atom(name: '_CreateSplitController._event');
 
   @override
-  String get _eventName {
-    _$_eventNameAtom.reportRead();
-    return super._eventName;
+  EventModel get _event {
+    _$_eventAtom.reportRead();
+    return super._event;
   }
 
   @override
-  set _eventName(String value) {
-    _$_eventNameAtom.reportWrite(value, super._eventName, () {
-      super._eventName = value;
-    });
-  }
-
-  final _$_selectedFriendsAtom =
-      Atom(name: '_CreateSplitController._selectedFriends');
-
-  @override
-  List<FriendModel> get _selectedFriends {
-    _$_selectedFriendsAtom.reportRead();
-    return super._selectedFriends;
-  }
-
-  @override
-  set _selectedFriends(List<FriendModel> value) {
-    _$_selectedFriendsAtom.reportWrite(value, super._selectedFriends, () {
-      super._selectedFriends = value;
-    });
-  }
-
-  final _$_itemsAtom = Atom(name: '_CreateSplitController._items');
-
-  @override
-  List<ItemModel> get _items {
-    _$_itemsAtom.reportRead();
-    return super._items;
-  }
-
-  @override
-  set _items(List<ItemModel> value) {
-    _$_itemsAtom.reportWrite(value, super._items, () {
-      super._items = value;
+  set _event(EventModel value) {
+    _$_eventAtom.reportWrite(value, super._event, () {
+      super._event = value;
     });
   }
 
@@ -82,11 +51,12 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
       ActionController(name: '_CreateSplitController');
 
   @override
-  dynamic setEventName(dynamic value) {
+  dynamic onChanged(
+      {String? name, List<FriendModel>? friends, List<ItemModel>? items}) {
     final _$actionInfo = _$_CreateSplitControllerActionController.startAction(
-        name: '_CreateSplitController.setEventName');
+        name: '_CreateSplitController.onChanged');
     try {
-      return super.setEventName(value);
+      return super.onChanged(name: name, friends: friends, items: items);
     } finally {
       _$_CreateSplitControllerActionController.endAction(_$actionInfo);
     }
@@ -109,28 +79,6 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
         name: '_CreateSplitController.nextPage');
     try {
       return super.nextPage();
-    } finally {
-      _$_CreateSplitControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setSelectedFriends(List<FriendModel> value) {
-    final _$actionInfo = _$_CreateSplitControllerActionController.startAction(
-        name: '_CreateSplitController.setSelectedFriends');
-    try {
-      return super.setSelectedFriends(value);
-    } finally {
-      _$_CreateSplitControllerActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setItems(List<ItemModel> value) {
-    final _$actionInfo = _$_CreateSplitControllerActionController.startAction(
-        name: '_CreateSplitController.setItems');
-    try {
-      return super.setItems(value);
     } finally {
       _$_CreateSplitControllerActionController.endAction(_$actionInfo);
     }

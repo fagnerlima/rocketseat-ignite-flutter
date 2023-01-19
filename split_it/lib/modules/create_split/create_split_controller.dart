@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:split_it/shared/models/event_model.dart';
 import 'package:split_it/shared/models/friend_model.dart';
 import 'package:split_it/shared/models/item_model.dart';
 
@@ -14,30 +15,28 @@ abstract class _CreateSplitController with Store {
   int currentPage = 0;
 
   @observable
-  String _eventName = '';
-
-  @observable
-  List<FriendModel> _selectedFriends = <FriendModel>[];
-
-  @observable
-  List<ItemModel> _items = <ItemModel>[];
+  EventModel _event = EventModel();
 
   @computed
   bool get enabledNavigateButton {
     switch (currentPage) {
       case 0:
-        return _eventName.isNotEmpty;
+        return _event.name.isNotEmpty;
       case 1:
-        return _selectedFriends.isNotEmpty;
+        return _event.friends.isNotEmpty;
       case 2:
-        return _items.isNotEmpty;
+        return _event.items.isNotEmpty;
       default:
         return false;
     }
   }
-
+  
   @action
-  setEventName(value) => _eventName = value;
+  onChanged({
+    String? name,
+    List<FriendModel>? friends,
+    List<ItemModel>? items
+  }) => _event = _event.copyWith(name: name, friends: friends, items: items);
 
   @action
   backPage() {
@@ -52,11 +51,5 @@ abstract class _CreateSplitController with Store {
       currentPage++;
     }
   }
-
-  @action
-  void setSelectedFriends(List<FriendModel> value) => _selectedFriends = value;
-
-  @action
-  void setItems(List<ItemModel> value) => _items = value;
 
 }

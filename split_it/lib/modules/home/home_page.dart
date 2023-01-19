@@ -5,7 +5,7 @@ import 'package:split_it/modules/home/home_state.dart';
 import 'package:split_it/modules/home/widgets/app_bar/app_bar_widget.dart';
 import 'package:split_it/modules/home/widgets/event_tile_widget.dart';
 import 'package:split_it/modules/login/models/user_model/user.dart';
-import 'package:split_it/shared/models/event.dart';
+import 'package:split_it/shared/models/event_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
     switch (controller.state.runtimeType) {
       case HomeStateLoading:
         return List.generate(4, (index) => EventTileWidget(
-          data: Event(),
+          data: EventModel(),
           isLoading: true,
         ));
       case HomeStateSuccess:

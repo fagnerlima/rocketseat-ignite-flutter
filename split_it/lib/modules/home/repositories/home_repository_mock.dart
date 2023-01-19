@@ -1,6 +1,6 @@
 import 'package:split_it/modules/home/models/dashboard_model.dart';
 import 'package:split_it/modules/home/repositories/home_repository.dart';
-import 'package:split_it/shared/models/event.dart';
+import 'package:split_it/shared/models/event_model.dart';
 
 class HomeRepositoryMock extends HomeRepository {
   @override
@@ -11,51 +11,44 @@ class HomeRepositoryMock extends HomeRepository {
   }
 
   @override
-  Future<List<Event>> getEvents() async {
+  Future<List<EventModel>> getEvents() async {
     await Future.delayed(Duration(seconds: 2));
 
     return [
-      Event(
-        title: 'Churrasco',
+      EventModel(
+        name: 'Churrasco',
         created: DateTime.now(),
         value: 90,
-        people: 2,
       ),
-      Event(
-        title: 'Churrasco',
+      EventModel(
+        name: 'Churrasco',
         created: DateTime.now(),
         value: 90,
-        people: 2,
       ),
-      Event(
-        title: 'Churrasco',
+      EventModel(
+        name: 'Churrasco',
         created: DateTime.now(),
         value: -80,
-        people: 1,
       ),
-      Event(
-        title: 'Churrasco',
+      EventModel(
+        name: 'Churrasco',
         created: DateTime.now(),
         value: 90,
-        people: 2,
       ),
-      Event(
-        title: 'Churrasco',
+      EventModel(
+        name: 'Churrasco',
         created: DateTime.now(),
         value: -80,
-        people: 1,
       ),
-      Event(
-        title: 'Churrasco',
+      EventModel(
+        name: 'Churrasco',
         created: DateTime.now(),
         value: 90,
-        people: 2,
       ),
-      Event(
-        title: 'Churrasco',
+      EventModel(
+        name: 'Churrasco',
         created: DateTime.now(),
         value: -80,
-        people: 1,
       ),
     ];
   }

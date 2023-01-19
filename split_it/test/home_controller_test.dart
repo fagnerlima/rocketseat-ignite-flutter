@@ -4,7 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:split_it/modules/home/home_controller.dart';
 import 'package:split_it/modules/home/home_state.dart';
 import 'package:split_it/modules/home/repositories/home_repository.dart';
-import 'package:split_it/shared/models/event.dart';
+import 'package:split_it/shared/models/event_model.dart';
 
 class HomeRepositoryMock extends Mock implements HomeRepository {}
 
@@ -27,11 +27,10 @@ void main() {
 
     when(repository.getEvents)
         .thenAnswer((invocation) async => [
-          Event(
-            title: 'title',
+          EventModel(
+            name: 'title',
             created: DateTime.now(),
             value: 100,
-            people: 1
           )
         ]);
     await controller.getEvents();

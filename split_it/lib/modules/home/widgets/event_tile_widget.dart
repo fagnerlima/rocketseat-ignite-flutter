@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:split_it/modules/home/widgets/icon_dollar_widget.dart';
 import 'package:split_it/modules/home/widgets/loading_widget.dart';
-import 'package:split_it/shared/models/event.dart';
+import 'package:split_it/shared/models/event_model.dart';
 import 'package:split_it/shared/util/date_utils.dart' as dt;
 import 'package:split_it/shared/util/number_utils.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class EventTileWidget extends StatelessWidget {
-  final Event data;
+  final EventModel data;
   final bool isLoading;
 
   const EventTileWidget({
@@ -68,7 +68,7 @@ class EventTileWidget extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Text(
-                    data.title!,
+                    data.name!,
                     style: AppTheme.textStyles.eventTileTitle,
                   ),
                   subtitle: Text(
