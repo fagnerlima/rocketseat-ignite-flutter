@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'base_model.dart';
 import 'friend_model.dart';
 import 'item_model.dart';
@@ -5,18 +7,27 @@ import 'item_model.dart';
 class EventModel extends BaseModel {
   final String name;
   final DateTime? created;
-  final double? value;
   final List<ItemModel> items;
   final List<FriendModel> friends;
 
   int get people => friends.length;
 
+  double get value {
+    if (items.isEmpty) {
+      return 0;
+    }
+
+    return items.reduce((value, element) =>
+        value = value.copyWith(value: value.value + element.value)).value;
+  }
+
+  double get splitedValue => value / people;
+
   const EventModel({
     this.name = '',
     this.created,
-    this.value,
-    this.items = const <ItemModel>[],
-    this.friends = const <FriendModel>[],
+    this.items = const [],
+    this.friends = const [],
   });
 
   @override
@@ -59,7 +70,6 @@ class EventModel extends BaseModel {
     return EventModel(
       name: name ?? this.name,
       created: created ?? this.created,
-      value: value ?? this.value,
       items: items ?? this.items,
       friends: friends ?? this.friends,
     );
@@ -68,7 +78,7 @@ class EventModel extends BaseModel {
   Map<String, dynamic> toMap() {
     return {
       'name': this.name,
-      'created': this.created,
+      'created': FieldValue.serverTimestamp(),
       'value': this.value,
       'items': this.items.map((e) => e.toMap()).toList(),
       'friends': this.friends.map((e) => e.toMap()).toList(),
@@ -79,7 +89,6 @@ class EventModel extends BaseModel {
     return EventModel(
       name: map['name'] as String,
       created: map['created'] as DateTime,
-      value: map['value'] as double,
       items: map['items'] as List<ItemModel>,
       friends: map['friends'] as List<FriendModel>,
     );
