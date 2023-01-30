@@ -16,6 +16,13 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
           Computed<bool>(() => super.enabledNavigateButton,
               name: '_CreateSplitController.enabledNavigateButton'))
       .value;
+  Computed<bool>? _$isLastPageComputed;
+
+  @override
+  bool get isLastPage =>
+      (_$isLastPageComputed ??= Computed<bool>(() => super.isLastPage,
+              name: '_CreateSplitController.isLastPage'))
+          .value;
 
   final _$currentPageAtom = Atom(name: '_CreateSplitController.currentPage');
 
@@ -45,6 +52,29 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
     _$_eventAtom.reportWrite(value, super._event, () {
       super._event = value;
     });
+  }
+
+  final _$statusAtom = Atom(name: '_CreateSplitController.status');
+
+  @override
+  String get status {
+    _$statusAtom.reportRead();
+    return super.status;
+  }
+
+  @override
+  set status(String value) {
+    _$statusAtom.reportWrite(value, super.status, () {
+      super.status = value;
+    });
+  }
+
+  final _$saveEventAsyncAction =
+      AsyncAction('_CreateSplitController.saveEvent');
+
+  @override
+  Future<void> saveEvent() {
+    return _$saveEventAsyncAction.run(() => super.saveEvent());
   }
 
   final _$_CreateSplitControllerActionController =
@@ -88,7 +118,9 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
   String toString() {
     return '''
 currentPage: ${currentPage},
-enabledNavigateButton: ${enabledNavigateButton}
+status: ${status},
+enabledNavigateButton: ${enabledNavigateButton},
+isLastPage: ${isLastPage}
     ''';
   }
 }

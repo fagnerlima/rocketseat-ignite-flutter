@@ -21,7 +21,7 @@ abstract class StepTwoControllerBase with Store {
   String _nameFilter = '';
 
   StepTwoControllerBase({ required this.controller }) {
-    autorun((_) => controller.onChanged(friends: _selectedFriends));
+    autorun((_) => controller.onChanged(friends: _selectedFriends.toList()));
   }
 
   @computed

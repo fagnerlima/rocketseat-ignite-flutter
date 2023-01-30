@@ -1,7 +1,8 @@
+import 'base_model.dart';
 import 'friend_model.dart';
 import 'item_model.dart';
 
-class EventModel {
+class EventModel extends BaseModel {
   final String name;
   final DateTime? created;
   final double? value;
@@ -14,8 +15,8 @@ class EventModel {
     this.name = '',
     this.created,
     this.value,
-    this.items = const [],
-    this.friends = const [],
+    this.items = const <ItemModel>[],
+    this.friends = const <FriendModel>[],
   });
 
   @override
@@ -69,8 +70,8 @@ class EventModel {
       'name': this.name,
       'created': this.created,
       'value': this.value,
-      'items': this.items,
-      'friends': this.friends,
+      'items': this.items.map((e) => e.toMap()).toList(),
+      'friends': this.friends.map((e) => e.toMap()).toList(),
     };
   }
 

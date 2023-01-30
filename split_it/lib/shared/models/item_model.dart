@@ -1,4 +1,6 @@
-class ItemModel {
+import 'package:split_it/shared/models/base_model.dart';
+
+class ItemModel extends BaseModel {
   final String name;
   final double value;
 

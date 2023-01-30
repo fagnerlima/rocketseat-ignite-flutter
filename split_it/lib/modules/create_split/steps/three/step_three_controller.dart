@@ -8,7 +8,7 @@ class StepThreeController = _StepThreeControllerBase with _$StepThreeController;
 abstract class _StepThreeControllerBase with Store {
 
   @observable
-  ObservableList<ItemModel> items = ObservableList.of([]);
+  ObservableList<ItemModel> items = ObservableList.of(<ItemModel>[]);
 
   @observable
   ItemModel item = ItemModel();
@@ -34,7 +34,6 @@ abstract class _StepThreeControllerBase with Store {
 
   @action
   void onChanged({String? name, double? value}) {
-    print('onChanged: $name, $value');
     item = item.copyWith(name: name, value: value);
   }
 }

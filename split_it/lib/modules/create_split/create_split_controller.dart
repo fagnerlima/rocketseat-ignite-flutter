@@ -2,6 +2,7 @@ import 'package:mobx/mobx.dart';
 import 'package:split_it/shared/models/event_model.dart';
 import 'package:split_it/shared/models/friend_model.dart';
 import 'package:split_it/shared/models/item_model.dart';
+import 'package:split_it/shared/repositories/events_repository.dart';
 
 part 'create_split_controller.g.dart';
 
@@ -9,6 +10,8 @@ class CreateSplitController = _CreateSplitController
     with _$CreateSplitController;
 
 abstract class _CreateSplitController with Store {
+  final EventsRepository repository;
+
   final totalPages = 3;
 
   @observable
@@ -16,6 +19,13 @@ abstract class _CreateSplitController with Store {
 
   @observable
   EventModel _event = EventModel();
+
+  @observable
+  String status = 'empty';
+
+  _CreateSplitController({
+    required this.repository
+  });
 
   @computed
   bool get enabledNavigateButton {
@@ -30,6 +40,9 @@ abstract class _CreateSplitController with Store {
         return false;
     }
   }
+
+  @computed
+  bool get isLastPage => currentPage == totalPages - 1;
   
   @action
   onChanged({
@@ -49,6 +62,18 @@ abstract class _CreateSplitController with Store {
   nextPage() {
     if (currentPage < totalPages - 1) {
       currentPage++;
+    }
+  }
+
+  @action
+  Future<void> saveEvent() async {
+    try {
+      status = 'loading';
+      final response = await repository.create(_event);
+      print(response);
+      status = 'success';
+    } catch (e) {
+      status = 'error';
     }
   }
 
