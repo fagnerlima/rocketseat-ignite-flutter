@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:split_it/modules/create_split/create_split_controller.dart';
+import 'package:split_it/modules/create_split/steps/four/step_four_page.dart';
 import 'package:split_it/modules/create_split/steps/one/step_one_page.dart';
 import 'package:split_it/modules/create_split/steps/three/step_three_page.dart';
 import 'package:split_it/modules/create_split/steps/two/step_two_page.dart';
@@ -28,6 +29,7 @@ class _CreateSplitPageState extends State<CreateSplitPage> {
       StepOnePage(controller: controller),
       StepTwoPage(controller: controller),
       StepThreePage(controller: controller,),
+      StepFourPage(event: controller.event,)
     ];
   }
 

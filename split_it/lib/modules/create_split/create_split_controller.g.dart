@@ -9,6 +9,13 @@ part of 'create_split_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CreateSplitController on _CreateSplitController, Store {
+  Computed<EventModel>? _$eventComputed;
+
+  @override
+  EventModel get event =>
+      (_$eventComputed ??= Computed<EventModel>(() => super.event,
+              name: '_CreateSplitController.event'))
+          .value;
   Computed<bool>? _$enabledNavigateButtonComputed;
 
   @override
@@ -119,6 +126,7 @@ mixin _$CreateSplitController on _CreateSplitController, Store {
     return '''
 currentPage: ${currentPage},
 status: ${status},
+event: ${event},
 enabledNavigateButton: ${enabledNavigateButton},
 isLastPage: ${isLastPage}
     ''';

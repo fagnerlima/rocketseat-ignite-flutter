@@ -28,6 +28,9 @@ abstract class _CreateSplitController with Store {
   });
 
   @computed
+  EventModel get event => _event;
+
+  @computed
   bool get enabledNavigateButton {
     switch (currentPage) {
       case 0:
@@ -72,6 +75,7 @@ abstract class _CreateSplitController with Store {
       final response = await repository.create(_event);
       print(response);
       status = 'success';
+      currentPage++;
     } catch (e) {
       status = 'error';
     }
