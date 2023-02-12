@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:split_it/modules/create_split/create_split_controller.dart';
 import 'package:split_it/shared/models/event_model.dart';
 import 'package:split_it/theme/app_theme.dart';
 
 class StepFourPage extends StatelessWidget {
-  final EventModel event;
+  final CreateSplitController controller;
 
   const StepFourPage({
     Key? key,
-    required this.event
+    required this.controller
   }) : super(key: key);
 
   @override
@@ -23,10 +24,10 @@ class StepFourPage extends StatelessWidget {
               Image.asset('assets/images/money.png')
             ],
           ),
-          Text('${event.friends.length} pessoas'),
-          Text('${event.splitedValue}'),
+          Text('${controller.event.friends.length} pessoas'),
+          Text('${controller.event.splitedValue}'),
           Text('para cada um'),
-          Row(children: event.friends.map((e) => Container(
+          Row(children: controller.event.friends.map((e) => Container(
             width: 48,
             height: 48,
             decoration: BoxDecoration(
