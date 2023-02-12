@@ -88,9 +88,9 @@ class EventModel extends BaseModel {
   factory EventModel.fromMap(Map<String, dynamic> map) {
     return EventModel(
       name: map['name'] as String,
-      created: map['created'] as DateTime,
-      items: map['items'] as List<ItemModel>,
-      friends: map['friends'] as List<FriendModel>,
+      created: (map['created'] as Timestamp).toDate(),
+      items: (map['items'] as List).map((i) => ItemModel.fromMap(map)).toList(),
+      friends: (map['friends'] as List).map((e) => FriendModel.fromMap(e)).toList(),
     );
   }
 

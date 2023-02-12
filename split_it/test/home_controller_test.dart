@@ -14,9 +14,7 @@ void main() {
 
   setUp(() {
     repository = HomeRepositoryMock();
-    controller = HomeController(
-      repository: repository
-    );
+    controller = HomeController();
   });
 
   test('GetEvents deve retornar sucesso', () async {
@@ -30,7 +28,6 @@ void main() {
           EventModel(
             name: 'title',
             created: DateTime.now(),
-            value: 100,
           )
         ]);
     await controller.getEvents();
