@@ -9,6 +9,13 @@ part 'create_split_controller.g.dart';
 class CreateSplitController = _CreateSplitController
     with _$CreateSplitController;
 
+enum CreateSplitStatus {
+  empty,
+  loading,
+  success,
+  error,
+}
+
 abstract class _CreateSplitController with Store {
   final EventsRepository repository;
 
@@ -21,7 +28,7 @@ abstract class _CreateSplitController with Store {
   EventModel _event = EventModel();
 
   @observable
-  String status = 'empty';
+  CreateSplitStatus status = CreateSplitStatus.empty;
 
   _CreateSplitController({
     required this.repository
@@ -71,13 +78,13 @@ abstract class _CreateSplitController with Store {
   @action
   Future<void> saveEvent() async {
     try {
-      status = 'loading';
+      status = CreateSplitStatus.loading;
       final response = await repository.create(_event);
       print(response);
-      status = 'success';
+      status = CreateSplitStatus.success;
       currentPage++;
     } catch (e) {
-      status = 'error';
+      status = CreateSplitStatus.error;
     }
   }
 

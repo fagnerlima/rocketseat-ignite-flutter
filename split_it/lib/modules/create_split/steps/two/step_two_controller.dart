@@ -11,6 +11,8 @@ abstract class StepTwoControllerBase with Store {
   final CreateSplitController controller;
   final repository = FriendsRepository();
 
+  late ReactionDisposer _disposer;
+
   @observable
   ObservableList<FriendModel> _friends = ObservableList.of([]);
 
@@ -21,8 +23,11 @@ abstract class StepTwoControllerBase with Store {
   String _nameFilter = '';
 
   StepTwoControllerBase({ required this.controller }) {
-    autorun((_) => controller.onChanged(friends: _selectedFriends.toList()));
+    _disposer = autorun((_) =>
+        controller.onChanged(friends: _selectedFriends.toList()));
   }
+
+  void dispose() => _disposer();
 
   @computed
   List<FriendModel> get friends {
